@@ -1,0 +1,992 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "golangci-lint",
+          "version": "2.12.2",
+          "informationUri": "https://golangci-lint.run",
+          "rules": [
+            {
+              "id": "errcheck",
+              "name": "errcheck",
+              "shortDescription": {
+                "text": "golangci-lint: errcheck"
+              }
+            },
+            {
+              "id": "gocyclo",
+              "name": "gocyclo",
+              "shortDescription": {
+                "text": "golangci-lint: gocyclo"
+              }
+            },
+            {
+              "id": "gosec",
+              "name": "gosec",
+              "shortDescription": {
+                "text": "golangci-lint: gosec"
+              }
+            },
+            {
+              "id": "ineffassign",
+              "name": "ineffassign",
+              "shortDescription": {
+                "text": "golangci-lint: ineffassign"
+              }
+            },
+            {
+              "id": "misspell",
+              "name": "misspell",
+              "shortDescription": {
+                "text": "golangci-lint: misspell"
+              }
+            },
+            {
+              "id": "nestif",
+              "name": "nestif",
+              "shortDescription": {
+                "text": "golangci-lint: nestif"
+              }
+            },
+            {
+              "id": "revive",
+              "name": "revive",
+              "shortDescription": {
+                "text": "golangci-lint: revive"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `f.Close` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/api/controllers/analytics_controller.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 286,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `f.Close` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/middleware/api_analytics.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 86,
+                  "startColumn": 11
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `cache.CacheSet` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/services/customfields_service.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `cache.CacheSet` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/services/customfieldsvalues_service.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 17
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `resp.Body.Close` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/services/node_red_service.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `cache.CacheSet` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/services/ticket_service.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 101,
+                  "startColumn": 17
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `resp.Body.Close` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "redmine/redmine_get_issue.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 277,
+                  "startColumn": 23
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gocyclo",
+          "level": "warning",
+          "message": {
+            "text": "cyclomatic complexity 16 of func `StartConfigWatcher` is high (> 15)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/config/watcher.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gocyclo",
+          "level": "warning",
+          "message": {
+            "text": "cyclomatic complexity 21 of func `CacheRedis` is high (> 15)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/middleware/cache_redis.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gocyclo",
+          "level": "warning",
+          "message": {
+            "text": "cyclomatic complexity 17 of func `(*TicketPlanDetail).UnmarshalJSON` is high (> 15)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/response/erp_response.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 156,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/api/controllers/ticket_types_controller.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/api/controllers/ticket_types_controller.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G115: integer overflow conversion int -> int32"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/formatter/ticket_formatter.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G115: integer overflow conversion int -> int32"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/formatter/ticket_formatter.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 94,
+                  "startColumn": 22
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/helpers/custom_field_helper.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 117,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/helpers/custom_field_helper.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 149,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/helpers/erp_customer_info_helper.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 143,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/helpers/ticket_helper.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G301: Expect directory permissions to be 0750 or less"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/middleware/api_analytics.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 45,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G302: Expect file permissions to be 0600 or less"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/middleware/api_analytics.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G301: Expect directory permissions to be 0750 or less"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/middleware/api_analytics.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 87,
+                  "startColumn": 14
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G302: Expect file permissions to be 0600 or less"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/middleware/api_analytics.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 88,
+                  "startColumn": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G117: Marshaled struct field \"APIKey\" (JSON key \"api_key\") matches secret pattern"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/middleware/api_analytics.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 95,
+                  "startColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/middleware/api_key_authz.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/services/init_service.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 167,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/services/init_service.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 207,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/services/init_service.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 315,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G706: Log injection via taint analysis"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/services/init_service.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 374,
+                  "startColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G115: integer overflow conversion int64 -> uint"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/utils/utils.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 81,
+                  "startColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G704: SSRF via taint analysis"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "redmine/redmine_get_issue.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 251,
+                  "startColumn": 29
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G704: SSRF via taint analysis"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "redmine/redmine_get_issue.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 271,
+                  "startColumn": 24
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G706: Log injection via taint analysis"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "redmine/redmine_get_issue.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 438,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ineffassign",
+          "level": "note",
+          "message": {
+            "text": "ineffectual assignment to filter"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/api/controllers/customfields_controller.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 49,
+                  "startColumn": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "misspell",
+          "level": "note",
+          "message": {
+            "text": "`initialised` is a misspelling of `initialized`"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/api/controllers/analytics_controller.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 117,
+                  "startColumn": 60
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "misspell",
+          "level": "note",
+          "message": {
+            "text": "`Programmes` is a misspelling of `Programs`"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/response/erp_response.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 178,
+                  "startColumn": 4
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "misspell",
+          "level": "note",
+          "message": {
+            "text": "`programmes` is a misspelling of `programs`"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/response/erp_response.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 181,
+                  "startColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "misspell",
+          "level": "note",
+          "message": {
+            "text": "`Programmes` is a misspelling of `Programs`"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/response/erp_response.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 251,
+                  "startColumn": 39
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "misspell",
+          "level": "note",
+          "message": {
+            "text": "`programmes` is a misspelling of `programs`"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/unit_tests/erp_response_test.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 25,
+                  "startColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nestif",
+          "level": "warning",
+          "message": {
+            "text": "`if pg != \"\"` has complex nested blocks (complexity: 5)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/api/controllers/object_customfield_value_controller.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 70,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nestif",
+          "level": "warning",
+          "message": {
+            "text": "`if cacheAvailable && ctx.Writer.Status() == http.StatusOK && writer.body.Len() > 0` has complex nested blocks (complexity: 5)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/middleware/cache_redis.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 146,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "revive",
+          "level": "note",
+          "message": {
+            "text": "cognitive-complexity: function scanAvailableDates has cognitive complexity 22 (> max enabled 20)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/api/controllers/analytics_controller.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 236,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "revive",
+          "level": "note",
+          "message": {
+            "text": "cognitive-complexity: function NewAPIKeyAuthz has cognitive complexity 21 (> max enabled 20)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/middleware/api_key_authz.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 60,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "revive",
+          "level": "note",
+          "message": {
+            "text": "cognitive-complexity: function TestGetGroupedCustomFieldValues has cognitive complexity 26 (> max enabled 20)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/tests/customfieldsvalues_test.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "revive",
+          "level": "note",
+          "message": {
+            "text": "cognitive-complexity: function TestTicketPlanDetailUnmarshalJSON has cognitive complexity 33 (> max enabled 20)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "frontiir/unit_tests/erp_response_test.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

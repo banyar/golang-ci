@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<style>
+:root{--bg:#fff;--fg:#111;--muted:#6b7280;--bdr:#e5e7eb;--code:#f3f4f6;
+  --crit:#fee2e2;--high:#fef9c3;--med:#fefce8;--low:#eff6ff;--info:#f0fdf4}
+@media(prefers-color-scheme:dark){:root{--bg:#0f172a;--fg:#e2e8f0;--muted:#94a3b8;
+  --bdr:#1e293b;--code:#1e293b;--crit:#450a0a;--high:#422006;--med:#1c1917;
+  --low:#0c1a2e;--info:#052e16}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);
+  color:var(--fg);line-height:1.6;padding:2rem;max-width:1400px;margin:0 auto}
+h1{font-size:1.75rem;margin-bottom:.35rem}
+h2{font-size:1.2rem;margin:2rem 0 .75rem;border-bottom:1px solid var(--bdr);padding-bottom:.4rem}
+table{width:100%;border-collapse:collapse;font-size:.875rem;margin-bottom:1.5rem}
+th{text-align:left;padding:.5rem .75rem;background:var(--code);
+  border-bottom:2px solid var(--bdr);font-weight:600;white-space:nowrap}
+td{padding:.45rem .75rem;border-bottom:1px solid var(--bdr);
+  vertical-align:top;word-break:break-word}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;
+  font-size:.8rem;font-family:monospace}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:.75rem;margin:1.25rem 0}
+.card{background:var(--code);border-radius:8px;padding:.85rem 1rem}
+.card .lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.06em}
+.card .val{font-size:1rem;font-weight:600;margin-top:.2rem;word-break:break-all}
+.risk{display:inline-flex;align-items:center;gap:.5rem;border-radius:9999px;
+  padding:.4rem 1.2rem;font-size:1.6rem;font-weight:700;margin:.75rem 0;
+  border:2px solid}
+.ov{overflow-x:auto}
+ol{padding-left:1.5rem}
+ol li{margin-bottom:.4rem}
+footer{margin-top:3rem;padding-top:.75rem;border-top:1px solid var(--bdr);
+  font-size:.75rem;color:var(--muted)}
+tr.crit{background:var(--crit)}
+tr.high{background:var(--high)}
+tr.med{background:var(--med)}
+tr.low{background:var(--low)}
+tr.info{background:var(--info)}
+</style>
+<title>Lint Report — 2026-07-08</title>
+</head>
+<body>
+<h1>Golangci-lint Audit Report</h1>
+<p style="color:var(--muted)">2026-07-08 &bull; remove-all-jwt-auth @ 9f2c20c &bull; Banyar Sithu</p>
+<div class="grid">
+  <div class="card"><div class="lbl">Go Version</div><div class="val">go1.26.2</div></div>
+  <div class="card"><div class="lbl">OS / Arch</div><div class="val">Linux / x86_64</div></div>
+  <div class="card"><div class="lbl">golangci-lint</div><div class="val">2.12.2</div></div>
+  <div class="card"><div class="lbl">Lint Duration</div><div class="val">3s</div></div>
+  <div class="card"><div class="lbl">Files Scanned</div><div class="val">22</div></div>
+  <div class="card"><div class="lbl">Packages</div><div class="val">11</div></div>
+  <div class="card"><div class="lbl">Run by</div><div class="val">ubuntu @ ubuntu-ThinkPad-X1-Carbon-6th</div></div>
+  <div class="card"><div class="lbl">Total Issues</div><div class="val">44</div></div>
+</div>
+<h2>Risk Score</h2>
+<div class="risk" style="color:#ef4444;border-color:#ef4444">100 / 100</div>
+<div class="ov"><table>
+<thead><tr><th>Severity</th><th>Count</th><th>Weight</th><th>Contribution</th></tr></thead>
+<tbody>
+<tr class="crit"><td>🔴 Critical</td><td>22</td><td>×10</td><td>220</td></tr>
+<tr class="high"><td>⚠️ High</td><td>10</td><td>×5</td><td>50</td></tr>
+<tr class="med"><td>🟡 Medium</td><td>2</td><td>×2</td><td>4</td></tr>
+<tr class="low"><td>🔵 Low</td><td>5</td><td>×1</td><td>5</td></tr>
+<tr class="info"><td>ℹ️ Info</td><td>5</td><td>×0</td><td>0</td></tr>
+</tbody></table></div>
+<h2>Summary by Linter</h2>
+<div class="ov"><table>
+<thead><tr><th>Linter</th><th>Count</th><th>Severity</th></tr></thead>
+<tbody>
+<tr class="crit"><td><code>gosec</code></td><td>22</td><td>🔴 Critical</td></tr>
+<tr class="high"><td><code>errcheck</code></td><td>7</td><td>⚠️ High</td></tr>
+<tr class="info"><td><code>misspell</code></td><td>5</td><td>ℹ️ Info</td></tr>
+<tr class="low"><td><code>revive</code></td><td>4</td><td>🔵 Low</td></tr>
+<tr class="high"><td><code>gocyclo</code></td><td>3</td><td>⚠️ High</td></tr>
+<tr class="med"><td><code>nestif</code></td><td>2</td><td>🟡 Medium</td></tr>
+<tr class="low"><td><code>ineffassign</code></td><td>1</td><td>🔵 Low</td></tr>
+</tbody></table></div>
+<h2>Top Files with Issues</h2>
+<div class="ov"><table>
+<thead><tr><th>File</th><th>Issues</th></tr></thead>
+<tbody>
+<tr><td><code>frontiir/middleware/api_analytics.go</code></td><td>6</td></tr>
+<tr><td><code>frontiir/response/erp_response.go</code></td><td>4</td></tr>
+<tr><td><code>frontiir/services/init_service.go</code></td><td>4</td></tr>
+<tr><td><code>redmine/redmine_get_issue.go</code></td><td>4</td></tr>
+<tr><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>3</td></tr>
+<tr><td><code>frontiir/api/controllers/ticket_types_controller.go</code></td><td>2</td></tr>
+<tr><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>2</td></tr>
+<tr><td><code>frontiir/helpers/custom_field_helper.go</code></td><td>2</td></tr>
+<tr><td><code>frontiir/middleware/api_key_authz.go</code></td><td>2</td></tr>
+<tr><td><code>frontiir/middleware/cache_redis.go</code></td><td>2</td></tr>
+</tbody></table></div>
+<h2>All Issues</h2>
+<div class="ov"><table>
+<thead><tr><th>#</th><th>File</th><th>Line</th><th>Linter</th><th>Issue</th></tr></thead>
+<tbody>
+<tr class="high"><td>1</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>286</td><td><code>errcheck</code></td><td>Error return value of `f.Close` is not checked</td></tr>
+<tr class="high"><td>2</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>86</td><td><code>errcheck</code></td><td>Error return value of `f.Close` is not checked</td></tr>
+<tr class="high"><td>3</td><td><code>frontiir/services/customfields_service.go</code></td><td>58</td><td><code>errcheck</code></td><td>Error return value of `cache.CacheSet` is not checked</td></tr>
+<tr class="high"><td>4</td><td><code>frontiir/services/customfieldsvalues_service.go</code></td><td>65</td><td><code>errcheck</code></td><td>Error return value of `cache.CacheSet` is not checked</td></tr>
+<tr class="high"><td>5</td><td><code>frontiir/services/node_red_service.go</code></td><td>48</td><td><code>errcheck</code></td><td>Error return value of `resp.Body.Close` is not checked</td></tr>
+<tr class="high"><td>6</td><td><code>frontiir/services/ticket_service.go</code></td><td>101</td><td><code>errcheck</code></td><td>Error return value of `cache.CacheSet` is not checked</td></tr>
+<tr class="high"><td>7</td><td><code>redmine/redmine_get_issue.go</code></td><td>277</td><td><code>errcheck</code></td><td>Error return value of `resp.Body.Close` is not checked</td></tr>
+<tr class="high"><td>8</td><td><code>frontiir/config/watcher.go</code></td><td>17</td><td><code>gocyclo</code></td><td>cyclomatic complexity 16 of func `StartConfigWatcher` is high (&gt; 15)</td></tr>
+<tr class="high"><td>9</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>22</td><td><code>gocyclo</code></td><td>cyclomatic complexity 21 of func `CacheRedis` is high (&gt; 15)</td></tr>
+<tr class="high"><td>10</td><td><code>frontiir/response/erp_response.go</code></td><td>156</td><td><code>gocyclo</code></td><td>cyclomatic complexity 17 of func `(*TicketPlanDetail).UnmarshalJSON` is high (&gt; 15)</td></tr>
+<tr class="crit"><td>11</td><td><code>frontiir/api/controllers/ticket_types_controller.go</code></td><td>57</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>12</td><td><code>frontiir/api/controllers/ticket_types_controller.go</code></td><td>128</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>13</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>11</td><td><code>gosec</code></td><td>G115: integer overflow conversion int -&gt; int32</td></tr>
+<tr class="crit"><td>14</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>94</td><td><code>gosec</code></td><td>G115: integer overflow conversion int -&gt; int32</td></tr>
+<tr class="crit"><td>15</td><td><code>frontiir/helpers/custom_field_helper.go</code></td><td>117</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>16</td><td><code>frontiir/helpers/custom_field_helper.go</code></td><td>149</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>17</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>143</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>18</td><td><code>frontiir/helpers/ticket_helper.go</code></td><td>26</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>19</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>45</td><td><code>gosec</code></td><td>G301: Expect directory permissions to be 0750 or less</td></tr>
+<tr class="crit"><td>20</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>50</td><td><code>gosec</code></td><td>G302: Expect file permissions to be 0600 or less</td></tr>
+<tr class="crit"><td>21</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>87</td><td><code>gosec</code></td><td>G301: Expect directory permissions to be 0750 or less</td></tr>
+<tr class="crit"><td>22</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>88</td><td><code>gosec</code></td><td>G302: Expect file permissions to be 0600 or less</td></tr>
+<tr class="crit"><td>23</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>95</td><td><code>gosec</code></td><td>G117: Marshaled struct field "APIKey" (JSON key "api_key") matches secret pattern</td></tr>
+<tr class="crit"><td>24</td><td><code>frontiir/middleware/api_key_authz.go</code></td><td>63</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>25</td><td><code>frontiir/services/init_service.go</code></td><td>167</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>26</td><td><code>frontiir/services/init_service.go</code></td><td>207</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>27</td><td><code>frontiir/services/init_service.go</code></td><td>315</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>28</td><td><code>frontiir/services/init_service.go</code></td><td>374</td><td><code>gosec</code></td><td>G706: Log injection via taint analysis</td></tr>
+<tr class="crit"><td>29</td><td><code>frontiir/utils/utils.go</code></td><td>81</td><td><code>gosec</code></td><td>G115: integer overflow conversion int64 -&gt; uint</td></tr>
+<tr class="crit"><td>30</td><td><code>redmine/redmine_get_issue.go</code></td><td>251</td><td><code>gosec</code></td><td>G704: SSRF via taint analysis</td></tr>
+<tr class="crit"><td>31</td><td><code>redmine/redmine_get_issue.go</code></td><td>271</td><td><code>gosec</code></td><td>G704: SSRF via taint analysis</td></tr>
+<tr class="crit"><td>32</td><td><code>redmine/redmine_get_issue.go</code></td><td>438</td><td><code>gosec</code></td><td>G706: Log injection via taint analysis</td></tr>
+<tr class="low"><td>33</td><td><code>frontiir/api/controllers/customfields_controller.go</code></td><td>49</td><td><code>ineffassign</code></td><td>ineffectual assignment to filter</td></tr>
+<tr class="info"><td>34</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>117</td><td><code>misspell</code></td><td>`initialised` is a misspelling of `initialized`</td></tr>
+<tr class="info"><td>35</td><td><code>frontiir/response/erp_response.go</code></td><td>178</td><td><code>misspell</code></td><td>`Programmes` is a misspelling of `Programs`</td></tr>
+<tr class="info"><td>36</td><td><code>frontiir/response/erp_response.go</code></td><td>181</td><td><code>misspell</code></td><td>`programmes` is a misspelling of `programs`</td></tr>
+<tr class="info"><td>37</td><td><code>frontiir/response/erp_response.go</code></td><td>251</td><td><code>misspell</code></td><td>`Programmes` is a misspelling of `Programs`</td></tr>
+<tr class="info"><td>38</td><td><code>frontiir/unit_tests/erp_response_test.go</code></td><td>25</td><td><code>misspell</code></td><td>`programmes` is a misspelling of `programs`</td></tr>
+<tr class="med"><td>39</td><td><code>frontiir/api/controllers/object_customfield_value_controller.go</code></td><td>70</td><td><code>nestif</code></td><td>`if pg != ""` has complex nested blocks (complexity: 5)</td></tr>
+<tr class="med"><td>40</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>146</td><td><code>nestif</code></td><td>`if cacheAvailable && ctx.Writer.Status() == http.StatusOK && writer.body.Len() &gt; 0` has complex nested blocks (complexity: 5)</td></tr>
+<tr class="low"><td>41</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>236</td><td><code>revive</code></td><td>cognitive-complexity: function scanAvailableDates has cognitive complexity 22 (&gt; max enabled 20)</td></tr>
+<tr class="low"><td>42</td><td><code>frontiir/middleware/api_key_authz.go</code></td><td>60</td><td><code>revive</code></td><td>cognitive-complexity: function NewAPIKeyAuthz has cognitive complexity 21 (&gt; max enabled 20)</td></tr>
+<tr class="low"><td>43</td><td><code>frontiir/tests/customfieldsvalues_test.go</code></td><td>11</td><td><code>revive</code></td><td>cognitive-complexity: function TestGetGroupedCustomFieldValues has cognitive complexity 26 (&gt; max enabled 20)</td></tr>
+<tr class="low"><td>44</td><td><code>frontiir/unit_tests/erp_response_test.go</code></td><td>10</td><td><code>revive</code></td><td>cognitive-complexity: function TestTicketPlanDetailUnmarshalJSON has cognitive complexity 33 (&gt; max enabled 20)</td></tr>
+</tbody></table></div>
+<h2>Recommended Next Actions</h2>
+<ol>
+<li><code>gosec</code> — 22 issue(s)</li>
+<li><code>errcheck</code> — 7 issue(s)</li>
+<li><code>gocyclo</code> — 3 issue(s)</li>
+<li><code>nestif</code> — 2 issue(s)</li>
+<li><code>revive</code> — 4 issue(s)</li>
+</ol>
+<footer>Generated by golangci-report.sh v3.0 &bull; 2026-07-08 &bull; golangci-lint 2.12.2</footer>
+</body>
+</html>

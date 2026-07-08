@@ -1,0 +1,6 @@
+# golangci-lint binary (if downloaded locally)
+golangci-lint
+golangci-lint.exe
+
+# lint cache
+.golangci-lint-cache/
