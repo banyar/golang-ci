@@ -32,7 +32,7 @@ fi
 
 # ── Locate latest JSON report ─────────────────────────────────────────────────
 REPORT_DIR="${REPORT_DIR:-golangci/linter-report}"
-LATEST_JSON=$(find "$REPORT_DIR" -maxdepth 1 -name "*.json" 2>/dev/null | sort -r | head -1)
+LATEST_JSON=$(find "$REPORT_DIR" -maxdepth 2 -name "*.json" 2>/dev/null | sort -r | head -1)
 if [[ -z "$LATEST_JSON" ]]; then
   echo "Error: no lint JSON report found in ${REPORT_DIR}/. Run 'make lint' first." >&2
   exit 1

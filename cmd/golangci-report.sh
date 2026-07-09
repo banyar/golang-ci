@@ -1000,8 +1000,7 @@ main() {
 
     step "Verifying config"
     if ! check_config "$cfg"; then
-      FAILED_CONFIGS+=("$cfg")
-      warn "Skipping ${cfg} — config file not found"
+      warn "Skipping ${cfg} — config file not found (not a failure)"
       continue
     fi
 

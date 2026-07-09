@@ -2,5 +2,5 @@
 # Lines starting with # and blank lines are ignored. Execution order follows file order.
 # To add a config: append a new line. To remove: delete or comment out with #.
 # Override at runtime: GOLANGCI_CONFIGS="golangci.yml" make lint
-golangci.yml
+.golangci.yml
 #golangci_old.yml

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<style>
+:root{--bg:#fff;--fg:#111;--muted:#6b7280;--bdr:#e5e7eb;--code:#f3f4f6;
+  --crit:#fee2e2;--high:#fef9c3;--med:#fefce8;--low:#eff6ff;--info:#f0fdf4}
+@media(prefers-color-scheme:dark){:root{--bg:#0f172a;--fg:#e2e8f0;--muted:#94a3b8;
+  --bdr:#1e293b;--code:#1e293b;--crit:#450a0a;--high:#422006;--med:#1c1917;
+  --low:#0c1a2e;--info:#052e16}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);
+  color:var(--fg);line-height:1.6;padding:2rem;max-width:1400px;margin:0 auto}
+h1{font-size:1.75rem;margin-bottom:.35rem}
+h2{font-size:1.2rem;margin:2rem 0 .75rem;border-bottom:1px solid var(--bdr);padding-bottom:.4rem}
+table{width:100%;border-collapse:collapse;font-size:.875rem;margin-bottom:1.5rem}
+th{text-align:left;padding:.5rem .75rem;background:var(--code);
+  border-bottom:2px solid var(--bdr);font-weight:600;white-space:nowrap}
+td{padding:.45rem .75rem;border-bottom:1px solid var(--bdr);
+  vertical-align:top;word-break:break-word}
+code{background:var(--code);padding:.1rem .35rem;border-radius:3px;
+  font-size:.8rem;font-family:monospace}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:.75rem;margin:1.25rem 0}
+.card{background:var(--code);border-radius:8px;padding:.85rem 1rem}
+.card .lbl{font-size:.7rem;color:var(--muted);text-transform:uppercase;
+  letter-spacing:.06em}
+.card .val{font-size:1rem;font-weight:600;margin-top:.2rem;word-break:break-all}
+.risk{display:inline-flex;align-items:center;gap:.5rem;border-radius:9999px;
+  padding:.4rem 1.2rem;font-size:1.6rem;font-weight:700;margin:.75rem 0;
+  border:2px solid}
+.ov{overflow-x:auto}
+ol{padding-left:1.5rem}
+ol li{margin-bottom:.4rem}
+footer{margin-top:3rem;padding-top:.75rem;border-top:1px solid var(--bdr);
+  font-size:.75rem;color:var(--muted)}
+tr.crit{background:var(--crit)}
+tr.high{background:var(--high)}
+tr.med{background:var(--med)}
+tr.low{background:var(--low)}
+tr.info{background:var(--info)}
+</style>
+<title>Lint Report — 2026-07-09</title>
+</head>
+<body>
+<h1>Golangci-lint Audit Report</h1>
+<p style="color:var(--muted)">2026-07-09 &bull; remove-all-jwt-auth @ 9f2c20c &bull; Banyar Sithu</p>
+<div class="grid">
+  <div class="card"><div class="lbl">Go Version</div><div class="val">go1.26.2</div></div>
+  <div class="card"><div class="lbl">OS / Arch</div><div class="val">Linux / x86_64</div></div>
+  <div class="card"><div class="lbl">golangci-lint</div><div class="val">2.12.2</div></div>
+  <div class="card"><div class="lbl">Lint Duration</div><div class="val">5s</div></div>
+  <div class="card"><div class="lbl">Files Scanned</div><div class="val">50</div></div>
+  <div class="card"><div class="lbl">Packages</div><div class="val">16</div></div>
+  <div class="card"><div class="lbl">Run by</div><div class="val">ubuntu @ ubuntu-ThinkPad-X1-Carbon-6th</div></div>
+  <div class="card"><div class="lbl">Total Issues</div><div class="val">355</div></div>
+</div>
+<h2>Risk Score</h2>
+<div class="risk" style="color:#ef4444;border-color:#ef4444">100 / 100</div>
+<div class="ov"><table>
+<thead><tr><th>Severity</th><th>Count</th><th>Weight</th><th>Contribution</th></tr></thead>
+<tbody>
+<tr class="crit"><td>🔴 Critical</td><td>23</td><td>×10</td><td>230</td></tr>
+<tr class="high"><td>⚠️ High</td><td>10</td><td>×5</td><td>50</td></tr>
+<tr class="med"><td>🟡 Medium</td><td>0</td><td>×2</td><td>0</td></tr>
+<tr class="low"><td>🔵 Low</td><td>210</td><td>×1</td><td>210</td></tr>
+<tr class="info"><td>ℹ️ Info</td><td>112</td><td>×0</td><td>0</td></tr>
+</tbody></table></div>
+<h2>Summary by Linter</h2>
+<div class="ov"><table>
+<thead><tr><th>Linter</th><th>Count</th><th>Severity</th></tr></thead>
+<tbody>
+<tr class="low"><td><code>revive</code></td><td>209</td><td>🔵 Low</td></tr>
+<tr class="info"><td><code>gci</code></td><td>32</td><td>ℹ️ Info</td></tr>
+<tr class="crit"><td><code>gosec</code></td><td>23</td><td>🔴 Critical</td></tr>
+<tr class="info"><td><code>mnd</code></td><td>22</td><td>ℹ️ Info</td></tr>
+<tr class="info"><td><code>gofumpt</code></td><td>19</td><td>ℹ️ Info</td></tr>
+<tr class="info"><td><code>golines</code></td><td>17</td><td>ℹ️ Info</td></tr>
+<tr class="info"><td><code>whitespace</code></td><td>10</td><td>ℹ️ Info</td></tr>
+<tr class="info"><td><code>errorlint</code></td><td>8</td><td>ℹ️ Info</td></tr>
+<tr class="high"><td><code>errcheck</code></td><td>7</td><td>⚠️ High</td></tr>
+<tr class="high"><td><code>funlen</code></td><td>3</td><td>⚠️ High</td></tr>
+<tr class="info"><td><code>gocritic</code></td><td>2</td><td>ℹ️ Info</td></tr>
+<tr class="info"><td><code>godox</code></td><td>1</td><td>ℹ️ Info</td></tr>
+<tr class="info"><td><code>goimports</code></td><td>1</td><td>ℹ️ Info</td></tr>
+<tr class="low"><td><code>ineffassign</code></td><td>1</td><td>🔵 Low</td></tr>
+</tbody></table></div>
+<h2>Top Files with Issues</h2>
+<div class="ov"><table>
+<thead><tr><th>File</th><th>Issues</th></tr></thead>
+<tbody>
+<tr><td><code>frontiir/services/init_service.go</code></td><td>28</td></tr>
+<tr><td><code>frontiir/utils/utils.go</code></td><td>23</td></tr>
+<tr><td><code>frontiir/cache/cache.go</code></td><td>17</td></tr>
+<tr><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>16</td></tr>
+<tr><td><code>frontiir/response/erp_response.go</code></td><td>15</td></tr>
+<tr><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>13</td></tr>
+<tr><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>13</td></tr>
+<tr><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>13</td></tr>
+<tr><td><code>frontiir/services/ticket_service.go</code></td><td>13</td></tr>
+<tr><td><code>frontiir/middleware/cache_redis.go</code></td><td>12</td></tr>
+</tbody></table></div>
+<h2>All Issues</h2>
+<div class="ov"><table>
+<thead><tr><th>#</th><th>File</th><th>Line</th><th>Linter</th><th>Issue</th></tr></thead>
+<tbody>
+<tr class="high"><td>1</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>286</td><td><code>errcheck</code></td><td>Error return value of `f.Close` is not checked</td></tr>
+<tr class="high"><td>2</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>86</td><td><code>errcheck</code></td><td>Error return value of `f.Close` is not checked</td></tr>
+<tr class="high"><td>3</td><td><code>frontiir/services/customfields_service.go</code></td><td>58</td><td><code>errcheck</code></td><td>Error return value of `cache.CacheSet` is not checked</td></tr>
+<tr class="high"><td>4</td><td><code>frontiir/services/customfieldsvalues_service.go</code></td><td>65</td><td><code>errcheck</code></td><td>Error return value of `cache.CacheSet` is not checked</td></tr>
+<tr class="high"><td>5</td><td><code>frontiir/services/node_red_service.go</code></td><td>48</td><td><code>errcheck</code></td><td>Error return value of `resp.Body.Close` is not checked</td></tr>
+<tr class="high"><td>6</td><td><code>frontiir/services/ticket_service.go</code></td><td>101</td><td><code>errcheck</code></td><td>Error return value of `cache.CacheSet` is not checked</td></tr>
+<tr class="high"><td>7</td><td><code>redmine/redmine_get_issue.go</code></td><td>277</td><td><code>errcheck</code></td><td>Error return value of `resp.Body.Close` is not checked</td></tr>
+<tr class="info"><td>8</td><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>199</td><td><code>errorlint</code></td><td>type assertion on error will fail on wrapped errors. Use errors.As to check for specific errors</td></tr>
+<tr class="info"><td>9</td><td><code>frontiir/cache/cache.go</code></td><td>75</td><td><code>errorlint</code></td><td>non-wrapping format verb for fmt.Errorf. Use `%w` to format errors</td></tr>
+<tr class="info"><td>10</td><td><code>frontiir/cache/cache.go</code></td><td>85</td><td><code>errorlint</code></td><td>non-wrapping format verb for fmt.Errorf. Use `%w` to format errors</td></tr>
+<tr class="info"><td>11</td><td><code>frontiir/cache/cache.go</code></td><td>106</td><td><code>errorlint</code></td><td>non-wrapping format verb for fmt.Errorf. Use `%w` to format errors</td></tr>
+<tr class="info"><td>12</td><td><code>frontiir/cache/cache.go</code></td><td>110</td><td><code>errorlint</code></td><td>non-wrapping format verb for fmt.Errorf. Use `%w` to format errors</td></tr>
+<tr class="info"><td>13</td><td><code>frontiir/cache/cache.go</code></td><td>123</td><td><code>errorlint</code></td><td>non-wrapping format verb for fmt.Errorf. Use `%w` to format errors</td></tr>
+<tr class="info"><td>14</td><td><code>frontiir/cache/cache.go</code></td><td>132</td><td><code>errorlint</code></td><td>non-wrapping format verb for fmt.Errorf. Use `%w` to format errors</td></tr>
+<tr class="info"><td>15</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>92</td><td><code>errorlint</code></td><td>comparing with == will fail on wrapped errors. Use errors.Is to check for a specific error</td></tr>
+<tr class="high"><td>16</td><td><code>frontiir/api/controllers/ticket_types_controller.go</code></td><td>104</td><td><code>funlen</code></td><td>Function 'GetTicketProblems' is too long (67 &gt; 60)</td></tr>
+<tr class="high"><td>17</td><td><code>frontiir/middleware/api_key_authz.go</code></td><td>60</td><td><code>funlen</code></td><td>Function 'NewAPIKeyAuthz' is too long (64 &gt; 60)</td></tr>
+<tr class="high"><td>18</td><td><code>frontiir/services/ticket_service.go</code></td><td>195</td><td><code>funlen</code></td><td>Function 'CreateTicket' is too long (72 &gt; 60)</td></tr>
+<tr class="info"><td>19</td><td><code>frontiir/api/analytics_routes.go</code></td><td>4</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>20</td><td><code>frontiir/api/controllers/customfields_controller.go</code></td><td>6</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>21</td><td><code>frontiir/api/controllers/erp_customer_controller.go</code></td><td>5</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>22</td><td><code>frontiir/api/controllers/object_customfield_value_controller.go</code></td><td>4</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>23</td><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>5</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>24</td><td><code>frontiir/api/controllers/ticket_types_controller.go</code></td><td>6</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>25</td><td><code>frontiir/api/erp_plan_detail_routes.go</code></td><td>3</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>26</td><td><code>frontiir/api/router.go</code></td><td>6</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>27</td><td><code>frontiir/api/setup/middleware_setup.go</code></td><td>8</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>28</td><td><code>frontiir/api/ticket_group_routes.go</code></td><td>3</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>29</td><td><code>frontiir/api/ticket_serach.go</code></td><td>3</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>30</td><td><code>frontiir/api/validation/ticket_create_validation.go</code></td><td>5</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>31</td><td><code>frontiir/cache/cache.go</code></td><td>9</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>32</td><td><code>frontiir/config/watcher.go</code></td><td>4</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>33</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>3</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>34</td><td><code>frontiir/helpers/custom_field_helper.go</code></td><td>8</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>35</td><td><code>frontiir/helpers/custom_field_values_helper.go</code></td><td>4</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>36</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>6</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>37</td><td><code>frontiir/helpers/object_custom_field_values_helper.go</code></td><td>4</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>38</td><td><code>frontiir/helpers/ticket_helper.go</code></td><td>7</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>39</td><td><code>frontiir/main.go</code></td><td>5</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>40</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>4</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>41</td><td><code>frontiir/middleware/api_key_authz.go</code></td><td>12</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>42</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>11</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>43</td><td><code>frontiir/middleware/validation.go</code></td><td>4</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>44</td><td><code>frontiir/services/customfields_service.go</code></td><td>6</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>45</td><td><code>frontiir/services/customfieldsvalues_service.go</code></td><td>8</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>46</td><td><code>frontiir/services/erp_customerInfo_service.go</code></td><td>10</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>47</td><td><code>frontiir/services/init_service.go</code></td><td>10</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>48</td><td><code>frontiir/services/node_red_service.go</code></td><td>13</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>49</td><td><code>frontiir/services/ticket_service.go</code></td><td>8</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>50</td><td><code>redmine/redmine_get_issue.go</code></td><td>111</td><td><code>gci</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>51</td><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>196</td><td><code>gocritic</code></td><td>commentFormatting: put a space between `//` and comment text</td></tr>
+<tr class="info"><td>52</td><td><code>frontiir/main.go</code></td><td>69</td><td><code>gocritic</code></td><td>exitAfterDefer: log.Fatal will exit, and `defer middleware.CloseAPIAnalytics()` will not run</td></tr>
+<tr class="info"><td>53</td><td><code>redmine/redmine_get_issue.go</code></td><td>175</td><td><code>godox</code></td><td>Line contains TODO/BUG/FIXME: "Bug, Feature, Support, etc."</td></tr>
+<tr class="info"><td>54</td><td><code>frontiir/api/analytics_routes.go</code></td><td>17</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>55</td><td><code>frontiir/api/controllers/object_customfield_value_controller.go</code></td><td>12</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>56</td><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>106</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>57</td><td><code>frontiir/api/setup/middleware_setup.go</code></td><td>5</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>58</td><td><code>frontiir/api/ticket_group_routes.go</code></td><td>54</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>59</td><td><code>frontiir/api/ticket_serach.go</code></td><td>23</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>60</td><td><code>frontiir/cache/cache.go</code></td><td>47</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>61</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>4</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>62</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>98</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>63</td><td><code>frontiir/helpers/ticket_helper.go</code></td><td>92</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>64</td><td><code>frontiir/middleware/api_key_authz.go</code></td><td>7</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>65</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>24</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>66</td><td><code>frontiir/middleware/security.go</code></td><td>10</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>67</td><td><code>frontiir/services/customfieldsvalues_service.go</code></td><td>6</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>68</td><td><code>frontiir/services/erp_customerInfo_service.go</code></td><td>9</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>69</td><td><code>frontiir/services/init_service.go</code></td><td>36</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>70</td><td><code>frontiir/services/node_red_service.go</code></td><td>10</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>71</td><td><code>frontiir/services/ticket_service.go</code></td><td>7</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>72</td><td><code>frontiir/utils/utils.go</code></td><td>122</td><td><code>gofumpt</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>73</td><td><code>frontiir/api/controllers/object_customfield_value_controller.go</code></td><td>5</td><td><code>goimports</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>74</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>322</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>75</td><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>84</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>76</td><td><code>frontiir/api/controllers/ticket_types_controller.go</code></td><td>36</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>77</td><td><code>frontiir/api/router.go</code></td><td>32</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>78</td><td><code>frontiir/helpers/custom_field_helper.go</code></td><td>97</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>79</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>34</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>80</td><td><code>frontiir/helpers/ticket_helper.go</code></td><td>59</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>81</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>130</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>82</td><td><code>frontiir/middleware/api_key_authz.go</code></td><td>90</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>83</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>26</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>84</td><td><code>frontiir/services/customfields_service.go</code></td><td>33</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>85</td><td><code>frontiir/services/customfieldsvalues_service.go</code></td><td>25</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>86</td><td><code>frontiir/services/erp_customerInfo_service.go</code></td><td>33</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>87</td><td><code>frontiir/services/init_service.go</code></td><td>149</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>88</td><td><code>frontiir/services/node_red_service.go</code></td><td>50</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>89</td><td><code>frontiir/services/ticket_service.go</code></td><td>68</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="info"><td>90</td><td><code>frontiir/utils/utils.go</code></td><td>137</td><td><code>golines</code></td><td>File is not properly formatted</td></tr>
+<tr class="crit"><td>91</td><td><code>frontiir/api/controllers/ticket_types_controller.go</code></td><td>57</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>92</td><td><code>frontiir/api/controllers/ticket_types_controller.go</code></td><td>128</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>93</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>11</td><td><code>gosec</code></td><td>G115: integer overflow conversion int -&gt; int32</td></tr>
+<tr class="crit"><td>94</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>94</td><td><code>gosec</code></td><td>G115: integer overflow conversion int -&gt; int32</td></tr>
+<tr class="crit"><td>95</td><td><code>frontiir/helpers/custom_field_helper.go</code></td><td>117</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>96</td><td><code>frontiir/helpers/custom_field_helper.go</code></td><td>149</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>97</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>143</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>98</td><td><code>frontiir/helpers/ticket_helper.go</code></td><td>26</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>99</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>45</td><td><code>gosec</code></td><td>G301: Expect directory permissions to be 0750 or less</td></tr>
+<tr class="crit"><td>100</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>50</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>101</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>87</td><td><code>gosec</code></td><td>G301: Expect directory permissions to be 0750 or less</td></tr>
+<tr class="crit"><td>102</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>88</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>103</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>95</td><td><code>gosec</code></td><td>G104: Errors unhandled</td></tr>
+<tr class="crit"><td>104</td><td><code>frontiir/middleware/api_key_authz.go</code></td><td>63</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>105</td><td><code>frontiir/middleware/api_key_authz.go</code></td><td>135</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>106</td><td><code>frontiir/services/init_service.go</code></td><td>167</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>107</td><td><code>frontiir/services/init_service.go</code></td><td>207</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>108</td><td><code>frontiir/services/init_service.go</code></td><td>315</td><td><code>gosec</code></td><td>G304: Potential file inclusion via variable</td></tr>
+<tr class="crit"><td>109</td><td><code>frontiir/services/init_service.go</code></td><td>374</td><td><code>gosec</code></td><td>G706: Log injection via taint analysis</td></tr>
+<tr class="crit"><td>110</td><td><code>frontiir/utils/utils.go</code></td><td>81</td><td><code>gosec</code></td><td>G115: integer overflow conversion int64 -&gt; uint</td></tr>
+<tr class="crit"><td>111</td><td><code>redmine/redmine_get_issue.go</code></td><td>251</td><td><code>gosec</code></td><td>G704: SSRF via taint analysis</td></tr>
+<tr class="crit"><td>112</td><td><code>redmine/redmine_get_issue.go</code></td><td>271</td><td><code>gosec</code></td><td>G704: SSRF via taint analysis</td></tr>
+<tr class="crit"><td>113</td><td><code>redmine/redmine_get_issue.go</code></td><td>438</td><td><code>gosec</code></td><td>G706: Log injection via taint analysis</td></tr>
+<tr class="low"><td>114</td><td><code>frontiir/api/controllers/customfields_controller.go</code></td><td>49</td><td><code>ineffassign</code></td><td>ineffectual assignment to filter</td></tr>
+<tr class="info"><td>115</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>313</td><td><code>mnd</code></td><td>Magic number: 100, in &lt;argument&gt; detected</td></tr>
+<tr class="info"><td>116</td><td><code>frontiir/api/controllers/customfields_controller.go</code></td><td>40</td><td><code>mnd</code></td><td>Magic number: 2, in &lt;condition&gt; detected</td></tr>
+<tr class="info"><td>117</td><td><code>frontiir/api/controllers/object_customfield_value_controller.go</code></td><td>74</td><td><code>mnd</code></td><td>Magic number: 2, in &lt;condition&gt; detected</td></tr>
+<tr class="info"><td>118</td><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>207</td><td><code>mnd</code></td><td>Magic number: 200, in &lt;condition&gt; detected</td></tr>
+<tr class="info"><td>119</td><td><code>frontiir/api/validation/erp_param_validation.go</code></td><td>19</td><td><code>mnd</code></td><td>Magic number: 400, in &lt;argument&gt; detected</td></tr>
+<tr class="info"><td>120</td><td><code>frontiir/api/validation/erp_param_validation.go</code></td><td>29</td><td><code>mnd</code></td><td>Magic number: 400, in &lt;argument&gt; detected</td></tr>
+<tr class="info"><td>121</td><td><code>frontiir/api/validation/erp_param_validation.go</code></td><td>36</td><td><code>mnd</code></td><td>Magic number: 400, in &lt;argument&gt; detected</td></tr>
+<tr class="info"><td>122</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>55</td><td><code>mnd</code></td><td>Magic number: 1024, in &lt;argument&gt; detected</td></tr>
+<tr class="info"><td>123</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>151</td><td><code>mnd</code></td><td>Magic number: 1000.0, in &lt;assign&gt; detected</td></tr>
+<tr class="info"><td>124</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>81</td><td><code>mnd</code></td><td>Magic number: 2, in &lt;argument&gt; detected</td></tr>
+<tr class="info"><td>125</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>158</td><td><code>mnd</code></td><td>Magic number: 10, in &lt;condition&gt; detected</td></tr>
+<tr class="info"><td>126</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>168</td><td><code>mnd</code></td><td>Magic number: 30, in &lt;operation&gt; detected</td></tr>
+<tr class="info"><td>127</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>172</td><td><code>mnd</code></td><td>Magic number: 3, in &lt;argument&gt; detected</td></tr>
+<tr class="info"><td>128</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>205</td><td><code>mnd</code></td><td>Magic number: 2, in &lt;argument&gt; detected</td></tr>
+<tr class="info"><td>129</td><td><code>frontiir/middleware/cors.go</code></td><td>18</td><td><code>mnd</code></td><td>Magic number: 12, in &lt;assign&gt; detected</td></tr>
+<tr class="info"><td>130</td><td><code>frontiir/middleware/security.go</code></td><td>13</td><td><code>mnd</code></td><td>Magic number: 315360000, in &lt;assign&gt; detected</td></tr>
+<tr class="info"><td>131</td><td><code>frontiir/utils/utils.go</code></td><td>42</td><td><code>mnd</code></td><td>Magic number: 400, in &lt;assign&gt; detected</td></tr>
+<tr class="info"><td>132</td><td><code>frontiir/utils/utils.go</code></td><td>49</td><td><code>mnd</code></td><td>Magic number: 422, in &lt;assign&gt; detected</td></tr>
+<tr class="info"><td>133</td><td><code>frontiir/utils/utils.go</code></td><td>56</td><td><code>mnd</code></td><td>Magic number: 422, in &lt;assign&gt; detected</td></tr>
+<tr class="info"><td>134</td><td><code>frontiir/utils/utils.go</code></td><td>64</td><td><code>mnd</code></td><td>Magic number: 200, in &lt;assign&gt; detected</td></tr>
+<tr class="info"><td>135</td><td><code>redmine/redmine_get_issue.go</code></td><td>307</td><td><code>mnd</code></td><td>Magic number: 500, in &lt;condition&gt; detected</td></tr>
+<tr class="info"><td>136</td><td><code>redmine/redmine_get_issue.go</code></td><td>330</td><td><code>mnd</code></td><td>Magic number: 200, in &lt;condition&gt; detected</td></tr>
+<tr class="low"><td>137</td><td><code>frontiir/api/analytics_routes.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>138</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>139</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>30</td><td><code>revive</code></td><td>exported: exported type AnalyticsLogEntry should have comment or be unexported</td></tr>
+<tr class="low"><td>140</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>45</td><td><code>revive</code></td><td>exported: exported type AnalyticsSummary should have comment or be unexported</td></tr>
+<tr class="low"><td>141</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>62</td><td><code>revive</code></td><td>exported: exported type PathCount should have comment or be unexported</td></tr>
+<tr class="low"><td>142</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>67</td><td><code>revive</code></td><td>exported: exported type APIKeyCount should have comment or be unexported</td></tr>
+<tr class="low"><td>143</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>73</td><td><code>revive</code></td><td>exported: exported type TimeSeriesPoint should have comment or be unexported</td></tr>
+<tr class="low"><td>144</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>128</td><td><code>revive</code></td><td>exported: exported function GetAnalyticsData should have comment or be unexported</td></tr>
+<tr class="low"><td>145</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>148</td><td><code>revive</code></td><td>exported: exported function GetMonthlyAnalyticsData should have comment or be unexported</td></tr>
+<tr class="low"><td>146</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>171</td><td><code>revive</code></td><td>exported: exported function GetAvailableMonths should have comment or be unexported</td></tr>
+<tr class="low"><td>147</td><td><code>frontiir/api/controllers/analytics_controller.go</code></td><td>203</td><td><code>revive</code></td><td>exported: exported function GetAvailableDates should have comment or be unexported</td></tr>
+<tr class="low"><td>148</td><td><code>frontiir/api/controllers/customfields_controller.go</code></td><td>12</td><td><code>revive</code></td><td>exported: exported type CustomFieldsController should have comment or be unexported</td></tr>
+<tr class="low"><td>149</td><td><code>frontiir/api/controllers/customfields_controller.go</code></td><td>16</td><td><code>revive</code></td><td>exported: comment on exported function NewCustomFieldsController should be of the form "NewCustomFieldsController ..."</td></tr>
+<tr class="low"><td>150</td><td><code>frontiir/api/controllers/customfields_controller.go</code></td><td>21</td><td><code>revive</code></td><td>exported: comment on exported method CustomFieldsController.GetRootCause should be of the form "GetRootCause ..."</td></tr>
+<tr class="low"><td>151</td><td><code>frontiir/api/controllers/erp_customer_controller.go</code></td><td>12</td><td><code>revive</code></td><td>exported: comment on exported function GetPlanDetails should be of the form "GetPlanDetails ..."</td></tr>
+<tr class="low"><td>152</td><td><code>frontiir/api/controllers/health_check_controller.go</code></td><td>9</td><td><code>revive</code></td><td>exported: exported type HealthCheckController should have comment or be unexported</td></tr>
+<tr class="low"><td>153</td><td><code>frontiir/api/controllers/health_check_controller.go</code></td><td>12</td><td><code>revive</code></td><td>exported: exported function Healthcheck should have comment or be unexported</td></tr>
+<tr class="low"><td>154</td><td><code>frontiir/api/controllers/object_customfield_value_controller.go</code></td><td>15</td><td><code>revive</code></td><td>exported: exported type ObjectCustomFieldValuesController should have comment or be unexported</td></tr>
+<tr class="low"><td>155</td><td><code>frontiir/api/controllers/object_customfield_value_controller.go</code></td><td>18</td><td><code>revive</code></td><td>exported: exported function NewObjectCustomFieldValuesController should have comment or be unexported</td></tr>
+<tr class="low"><td>156</td><td><code>frontiir/api/controllers/object_customfield_value_controller.go</code></td><td>24</td><td><code>revive</code></td><td>exported: comment on exported method ObjectCustomFieldValuesController.GetTicketIds should be of the form "GetTicketIds ..."</td></tr>
+<tr class="low"><td>157</td><td><code>frontiir/api/controllers/object_customfield_value_controller.go</code></td><td>39</td><td><code>revive</code></td><td>var-naming: method GetTicketIds should be GetTicketIDs</td></tr>
+<tr class="low"><td>158</td><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>19</td><td><code>revive</code></td><td>exported: exported type TicketController should have comment or be unexported</td></tr>
+<tr class="low"><td>159</td><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>22</td><td><code>revive</code></td><td>exported: exported function NewTicketController should have comment or be unexported</td></tr>
+<tr class="low"><td>160</td><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>30</td><td><code>revive</code></td><td>exported: comment on exported method TicketController.Get should be of the form "Get ..."</td></tr>
+<tr class="low"><td>161</td><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>52</td><td><code>revive</code></td><td>exported: comment on exported method TicketController.Create should be of the form "Create ..."</td></tr>
+<tr class="low"><td>162</td><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>65</td><td><code>revive</code></td><td>receiver-naming: receiver name tc should be consistent with previous receiver name c for TicketController</td></tr>
+<tr class="low"><td>163</td><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>91</td><td><code>revive</code></td><td>exported: comment on exported method TicketController.Update should be of the form "Update ..."</td></tr>
+<tr class="low"><td>164</td><td><code>frontiir/api/controllers/ticket_controller.go</code></td><td>105</td><td><code>revive</code></td><td>receiver-naming: receiver name tc should be consistent with previous receiver name c for TicketController</td></tr>
+<tr class="low"><td>165</td><td><code>frontiir/api/controllers/ticket_types_controller.go</code></td><td>17</td><td><code>revive</code></td><td>exported: exported type TicketTypesController should have comment or be unexported</td></tr>
+<tr class="low"><td>166</td><td><code>frontiir/api/controllers/ticket_types_controller.go</code></td><td>19</td><td><code>revive</code></td><td>exported: exported function NewTicketTypesController should have comment or be unexported</td></tr>
+<tr class="low"><td>167</td><td><code>frontiir/api/controllers/ticket_types_controller.go</code></td><td>23</td><td><code>revive</code></td><td>exported: comment on exported method TicketTypesController.GetTicketTypes should be of the form "GetTicketTypes ..."</td></tr>
+<tr class="low"><td>168</td><td><code>frontiir/api/controllers/ticket_types_controller.go</code></td><td>93</td><td><code>revive</code></td><td>exported: comment on exported method TicketTypesController.GetTicketProblems should be of the form "GetTicketProblems ..."</td></tr>
+<tr class="low"><td>169</td><td><code>frontiir/api/models/ticket.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>170</td><td><code>frontiir/api/models/ticket.go</code></td><td>7</td><td><code>revive</code></td><td>exported: exported type PayloadTicket should have comment or be unexported</td></tr>
+<tr class="low"><td>171</td><td><code>frontiir/api/models/ticket.go</code></td><td>12</td><td><code>revive</code></td><td>exported: exported type Actor should have comment or be unexported</td></tr>
+<tr class="low"><td>172</td><td><code>frontiir/api/models/ticket.go</code></td><td>18</td><td><code>revive</code></td><td>exported: exported type UpdateTicketRequest should have comment or be unexported</td></tr>
+<tr class="low"><td>173</td><td><code>frontiir/api/models/ticket.go</code></td><td>23</td><td><code>revive</code></td><td>exported: exported type TicketUser should have comment or be unexported</td></tr>
+<tr class="low"><td>174</td><td><code>frontiir/api/models/ticket.go</code></td><td>29</td><td><code>revive</code></td><td>exported: exported type DummyTicketRequest should have comment or be unexported</td></tr>
+<tr class="low"><td>175</td><td><code>frontiir/api/models/ticket.go</code></td><td>34</td><td><code>revive</code></td><td>exported: exported type CreateTicketRequest should have comment or be unexported</td></tr>
+<tr class="low"><td>176</td><td><code>frontiir/api/models/ticket.go</code></td><td>39</td><td><code>revive</code></td><td>exported: exported method DummyTicketRequest.ToUpdateTicketRequest should have comment or be unexported</td></tr>
+<tr class="low"><td>177</td><td><code>frontiir/api/router.go</code></td><td>15</td><td><code>revive</code></td><td>exported: exported function InitRouter should have comment or be unexported</td></tr>
+<tr class="low"><td>178</td><td><code>frontiir/api/setup/middleware_setup.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>179</td><td><code>frontiir/api/setup/middleware_setup.go</code></td><td>15</td><td><code>revive</code></td><td>exported: exported function ApplyRateLimit should have comment or be unexported</td></tr>
+<tr class="low"><td>180</td><td><code>frontiir/api/setup/middleware_setup.go</code></td><td>25</td><td><code>revive</code></td><td>exported: exported function ApplyMiddleWare should have comment or be unexported</td></tr>
+<tr class="low"><td>181</td><td><code>frontiir/api/ticket_group_routes.go</code></td><td>14</td><td><code>revive</code></td><td>exported: exported type TicketRoutesConfig should have comment or be unexported</td></tr>
+<tr class="low"><td>182</td><td><code>frontiir/api/ticket_group_routes.go</code></td><td>21</td><td><code>revive</code></td><td>exported: exported function NewTicketRoutesConfig should have comment or be unexported</td></tr>
+<tr class="low"><td>183</td><td><code>frontiir/api/validation/erp_param_validation.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>184</td><td><code>frontiir/api/validation/erp_param_validation.go</code></td><td>11</td><td><code>revive</code></td><td>exported: exported type Filter should have comment or be unexported</td></tr>
+<tr class="low"><td>185</td><td><code>frontiir/api/validation/erp_param_validation.go</code></td><td>15</td><td><code>revive</code></td><td>exported: comment on exported function GetQueryParam should be of the form "GetQueryParam ..." to match its exported status, not "getQueryParam ..."</td></tr>
+<tr class="low"><td>186</td><td><code>frontiir/api/validation/erp_param_validation.go</code></td><td>25</td><td><code>revive</code></td><td>exported: comment on exported function DecodeFilterParam should be of the form "DecodeFilterParam ..." to match its exported status, not "decodeFilterParam ..."</td></tr>
+<tr class="low"><td>187</td><td><code>frontiir/api/validation/ticket_create_validation.go</code></td><td>9</td><td><code>revive</code></td><td>exported: exported function ValidateCreateTicketFields should have comment or be unexported</td></tr>
+<tr class="low"><td>188</td><td><code>frontiir/cache/cache.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>189</td><td><code>frontiir/cache/cache.go</code></td><td>16</td><td><code>revive</code></td><td>exported: exported var Rdb should have comment or be unexported</td></tr>
+<tr class="low"><td>190</td><td><code>frontiir/cache/cache.go</code></td><td>17</td><td><code>revive</code></td><td>exported: exported var Ctx should have comment or be unexported</td></tr>
+<tr class="low"><td>191</td><td><code>frontiir/cache/cache.go</code></td><td>19</td><td><code>revive</code></td><td>exported: exported function InitRedis should have comment or be unexported</td></tr>
+<tr class="low"><td>192</td><td><code>frontiir/cache/cache.go</code></td><td>50</td><td><code>revive</code></td><td>exported: exported function CacheSet should have comment or be unexported</td></tr>
+<tr class="low"><td>193</td><td><code>frontiir/cache/cache.go</code></td><td>97</td><td><code>revive</code></td><td>exported: exported function CacheGet should have comment or be unexported</td></tr>
+<tr class="low"><td>194</td><td><code>frontiir/cache/cache.go</code></td><td>115</td><td><code>revive</code></td><td>exported: exported function GetAllKeys should have comment or be unexported</td></tr>
+<tr class="low"><td>195</td><td><code>frontiir/cache/cache.go</code></td><td>128</td><td><code>revive</code></td><td>exported: exported function DeleteCache should have comment or be unexported</td></tr>
+<tr class="low"><td>196</td><td><code>frontiir/common/common.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>197</td><td><code>frontiir/common/common.go</code></td><td>9</td><td><code>revive</code></td><td>var-naming: don't use ALL_CAPS in Go names; use CamelCase</td></tr>
+<tr class="low"><td>198</td><td><code>frontiir/common/common.go</code></td><td>13</td><td><code>revive</code></td><td>var-naming: don't use ALL_CAPS in Go names; use CamelCase</td></tr>
+<tr class="low"><td>199</td><td><code>frontiir/common/common.go</code></td><td>14</td><td><code>revive</code></td><td>var-naming: don't use ALL_CAPS in Go names; use CamelCase</td></tr>
+<tr class="low"><td>200</td><td><code>frontiir/common/common.go</code></td><td>15</td><td><code>revive</code></td><td>var-naming: don't use ALL_CAPS in Go names; use CamelCase</td></tr>
+<tr class="low"><td>201</td><td><code>frontiir/common/common.go</code></td><td>16</td><td><code>revive</code></td><td>var-naming: don't use ALL_CAPS in Go names; use CamelCase</td></tr>
+<tr class="low"><td>202</td><td><code>frontiir/config/watcher.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>203</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>204</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>9</td><td><code>revive</code></td><td>exported: exported function BuildFbytesResponse should have comment or be unexported</td></tr>
+<tr class="low"><td>205</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>22</td><td><code>revive</code></td><td>exported: exported function BuildFbytesCustomFiled should have comment or be unexported</td></tr>
+<tr class="low"><td>206</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>44</td><td><code>revive</code></td><td>var-naming: func MapCustomFieldsIdName should be MapCustomFieldsIDName</td></tr>
+<tr class="low"><td>207</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>52</td><td><code>revive</code></td><td>var-naming: func MapCustomFieldsIdValue should be MapCustomFieldsIDValue</td></tr>
+<tr class="low"><td>208</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>64</td><td><code>revive</code></td><td>exported: exported function MapCustomFieldValueName should have comment or be unexported</td></tr>
+<tr class="low"><td>209</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>77</td><td><code>revive</code></td><td>exported: exported function FormatCustomFieldName should have comment or be unexported</td></tr>
+<tr class="low"><td>210</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>83</td><td><code>revive</code></td><td>var-naming: func BuildTicketsIdListResponse should be BuildTicketsIDListResponse</td></tr>
+<tr class="low"><td>211</td><td><code>frontiir/formatter/ticket_formatter.go</code></td><td>91</td><td><code>revive</code></td><td>exported: exported function BuildTicketDetail should have comment or be unexported</td></tr>
+<tr class="low"><td>212</td><td><code>frontiir/helpers/custom_field_helper.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>213</td><td><code>frontiir/helpers/custom_field_helper.go</code></td><td>65</td><td><code>revive</code></td><td>exported: exported function GetFilteredCustomFields should have comment or be unexported</td></tr>
+<tr class="low"><td>214</td><td><code>frontiir/helpers/custom_field_helper.go</code></td><td>82</td><td><code>revive</code></td><td>var-naming: func GetCustomFieldIdByName should be GetCustomFieldIDByName</td></tr>
+<tr class="low"><td>215</td><td><code>frontiir/helpers/custom_field_helper.go</code></td><td>220</td><td><code>revive</code></td><td>exported: exported function DataMap should have comment or be unexported</td></tr>
+<tr class="low"><td>216</td><td><code>frontiir/helpers/custom_field_values_helper.go</code></td><td>11</td><td><code>revive</code></td><td>exported: exported function GetCustomFieldValues should have comment or be unexported</td></tr>
+<tr class="low"><td>217</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>21</td><td><code>revive</code></td><td>exported: exported type PriorityStatus should have comment or be unexported</td></tr>
+<tr class="low"><td>218</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>24</td><td><code>revive</code></td><td>exported: exported type DeviceState should have comment or be unexported</td></tr>
+<tr class="low"><td>219</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>27</td><td><code>revive</code></td><td>exported: exported const DeviceStateActive should have comment (or a comment on this block) or be unexported</td></tr>
+<tr class="low"><td>220</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>33</td><td><code>revive</code></td><td>exported: comment on exported function GroupCustomersByStatus should be of the form "GroupCustomersByStatus ..."</td></tr>
+<tr class="low"><td>221</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>43</td><td><code>revive</code></td><td>exported: exported function ValidateDeviceIDs should have comment or be unexported</td></tr>
+<tr class="low"><td>222</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>52</td><td><code>revive</code></td><td>exported: exported function FindDeviceIDInDevices should have comment or be unexported</td></tr>
+<tr class="low"><td>223</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>61</td><td><code>revive</code></td><td>exported: exported function FindDeviceByIDAndState should have comment or be unexported</td></tr>
+<tr class="low"><td>224</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>96</td><td><code>revive</code></td><td>exported: comment on exported function SelectPriorityGroup should be of the form "SelectPriorityGroup ..."</td></tr>
+<tr class="low"><td>225</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>137</td><td><code>revive</code></td><td>exported: exported function LoadCPELookupPriorityOrder should have comment or be unexported</td></tr>
+<tr class="low"><td>226</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>171</td><td><code>revive</code></td><td>exported: exported function GetPriorityOrder should have comment or be unexported</td></tr>
+<tr class="low"><td>227</td><td><code>frontiir/helpers/object_custom_field_values_helper.go</code></td><td>11</td><td><code>revive</code></td><td>exported: exported function GetObjectFieldValues should have comment or be unexported</td></tr>
+<tr class="low"><td>228</td><td><code>frontiir/helpers/ticket_helper.go</code></td><td>20</td><td><code>revive</code></td><td>exported: exported function LoadChannelValueMapper should have comment or be unexported</td></tr>
+<tr class="low"><td>229</td><td><code>frontiir/helpers/ticket_helper.go</code></td><td>48</td><td><code>revive</code></td><td>exported: exported function GetTicketByID should have comment or be unexported</td></tr>
+<tr class="low"><td>230</td><td><code>frontiir/helpers/ticket_helper.go</code></td><td>56</td><td><code>revive</code></td><td>exported: exported function GetTicketByIDs should have comment or be unexported</td></tr>
+<tr class="low"><td>231</td><td><code>frontiir/helpers/ticket_helper.go</code></td><td>64</td><td><code>revive</code></td><td>exported: exported function GetTicketDetail should have comment or be unexported</td></tr>
+<tr class="low"><td>232</td><td><code>frontiir/helpers/ticket_helper.go</code></td><td>95</td><td><code>revive</code></td><td>exported: exported function BuildTicketCreatePayload should have comment or be unexported</td></tr>
+<tr class="low"><td>233</td><td><code>frontiir/helpers/ticket_helper.go</code></td><td>158</td><td><code>revive</code></td><td>exported: exported function MapChannelValue should have comment or be unexported</td></tr>
+<tr class="low"><td>234</td><td><code>frontiir/main.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>235</td><td><code>frontiir/middleware/api_analytics.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>236</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>22</td><td><code>revive</code></td><td>exported: exported function CacheRedis should have comment or be unexported</td></tr>
+<tr class="low"><td>237</td><td><code>frontiir/middleware/cors.go</code></td><td>12</td><td><code>revive</code></td><td>exported: exported function Cors should have comment or be unexported</td></tr>
+<tr class="low"><td>238</td><td><code>frontiir/middleware/rate_limit.go</code></td><td>11</td><td><code>revive</code></td><td>exported: exported function RateLimiter should have comment or be unexported</td></tr>
+<tr class="low"><td>239</td><td><code>frontiir/middleware/security.go</code></td><td>8</td><td><code>revive</code></td><td>exported: exported function Security should have comment or be unexported</td></tr>
+<tr class="low"><td>240</td><td><code>frontiir/middleware/validation.go</code></td><td>11</td><td><code>revive</code></td><td>exported: exported function ValidateTicketRoute should have comment or be unexported</td></tr>
+<tr class="low"><td>241</td><td><code>frontiir/middleware/xss.go</code></td><td>8</td><td><code>revive</code></td><td>var-naming: func Xss should be XSS</td></tr>
+<tr class="low"><td>242</td><td><code>frontiir/response/customfield_response.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>243</td><td><code>frontiir/response/customfield_response.go</code></td><td>3</td><td><code>revive</code></td><td>exported: exported type CustomFieldValueItem should have comment or be unexported</td></tr>
+<tr class="low"><td>244</td><td><code>frontiir/response/erp_response.go</code></td><td>8</td><td><code>revive</code></td><td>exported: exported type Customer should have comment or be unexported</td></tr>
+<tr class="low"><td>245</td><td><code>frontiir/response/erp_response.go</code></td><td>22</td><td><code>revive</code></td><td>exported: exported type Status should have comment or be unexported</td></tr>
+<tr class="low"><td>246</td><td><code>frontiir/response/erp_response.go</code></td><td>27</td><td><code>revive</code></td><td>exported: exported type Devices should have comment or be unexported</td></tr>
+<tr class="low"><td>247</td><td><code>frontiir/response/erp_response.go</code></td><td>29</td><td><code>revive</code></td><td>exported: exported type Dates should have comment or be unexported</td></tr>
+<tr class="low"><td>248</td><td><code>frontiir/response/erp_response.go</code></td><td>33</td><td><code>revive</code></td><td>exported: exported type Device should have comment or be unexported</td></tr>
+<tr class="low"><td>249</td><td><code>frontiir/response/erp_response.go</code></td><td>38</td><td><code>revive</code></td><td>exported: exported type CustomersStatusInfo should have comment or be unexported</td></tr>
+<tr class="low"><td>250</td><td><code>frontiir/response/erp_response.go</code></td><td>45</td><td><code>revive</code></td><td>exported: exported method CustomersStatusInfo.UnmarshalJSON should have comment or be unexported</td></tr>
+<tr class="low"><td>251</td><td><code>frontiir/response/erp_response.go</code></td><td>65</td><td><code>revive</code></td><td>exported: exported type ERPPlanDetail should have comment or be unexported</td></tr>
+<tr class="low"><td>252</td><td><code>frontiir/response/erp_response.go</code></td><td>66</td><td><code>revive</code></td><td>var-naming: struct field LocalServiceId should be LocalServiceID</td></tr>
+<tr class="low"><td>253</td><td><code>frontiir/response/erp_response.go</code></td><td>76</td><td><code>revive</code></td><td>exported: exported method ERPPlanDetail.UnmarshalJSON should have comment or be unexported</td></tr>
+<tr class="low"><td>254</td><td><code>frontiir/response/erp_response.go</code></td><td>115</td><td><code>revive</code></td><td>exported: exported type ERPPlanDetailResponse should have comment or be unexported</td></tr>
+<tr class="low"><td>255</td><td><code>frontiir/response/erp_response.go</code></td><td>120</td><td><code>revive</code></td><td>exported: exported type ERPPlanDetailsResponse should have comment or be unexported</td></tr>
+<tr class="low"><td>256</td><td><code>frontiir/response/erp_response.go</code></td><td>156</td><td><code>revive</code></td><td>exported: exported method TicketPlanDetail.UnmarshalJSON should have comment or be unexported</td></tr>
+<tr class="low"><td>257</td><td><code>frontiir/response/erp_response.go</code></td><td>174</td><td><code>revive</code></td><td>var-naming: struct field PreOrderId should be PreOrderID</td></tr>
+<tr class="low"><td>258</td><td><code>frontiir/response/erp_response.go</code></td><td>275</td><td><code>revive</code></td><td>exported: exported type TicketPlanDetailResponse should have comment or be unexported</td></tr>
+<tr class="low"><td>259</td><td><code>frontiir/response/error_response.go</code></td><td>3</td><td><code>revive</code></td><td>exported: exported type ErrorResponse should have comment or be unexported</td></tr>
+<tr class="low"><td>260</td><td><code>frontiir/response/fbytes_response.go</code></td><td>8</td><td><code>revive</code></td><td>exported: exported type FBytesResponse should have comment or be unexported</td></tr>
+<tr class="low"><td>261</td><td><code>frontiir/response/fbytes_response.go</code></td><td>13</td><td><code>revive</code></td><td>exported: exported type FBytesRootCauseResponse should have comment or be unexported</td></tr>
+<tr class="low"><td>262</td><td><code>frontiir/response/fbytes_response.go</code></td><td>18</td><td><code>revive</code></td><td>exported: exported type RootCauseGroup should have comment or be unexported</td></tr>
+<tr class="low"><td>263</td><td><code>frontiir/response/fbytes_response.go</code></td><td>24</td><td><code>revive</code></td><td>exported: exported type FBytesDetail should have comment or be unexported</td></tr>
+<tr class="low"><td>264</td><td><code>frontiir/response/fbytes_response.go</code></td><td>35</td><td><code>revive</code></td><td>exported: exported type FBytesCustomFields should have comment or be unexported</td></tr>
+<tr class="low"><td>265</td><td><code>frontiir/response/fbytes_response.go</code></td><td>36</td><td><code>revive</code></td><td>var-naming: struct field LocalServiceId should be LocalServiceID</td></tr>
+<tr class="low"><td>266</td><td><code>frontiir/response/fbytes_response.go</code></td><td>37</td><td><code>revive</code></td><td>var-naming: struct field CustomerId should be CustomerID</td></tr>
+<tr class="low"><td>267</td><td><code>frontiir/response/fbytes_response.go</code></td><td>38</td><td><code>revive</code></td><td>var-naming: struct field CpeId should be CpeID</td></tr>
+<tr class="low"><td>268</td><td><code>frontiir/response/fbytes_response.go</code></td><td>50</td><td><code>revive</code></td><td>exported: exported type MainRootCause should have comment or be unexported</td></tr>
+<tr class="low"><td>269</td><td><code>frontiir/response/fbytes_response.go</code></td><td>57</td><td><code>revive</code></td><td>exported: exported method FBytesResponse.MarshalBinary should have comment or be unexported</td></tr>
+<tr class="low"><td>270</td><td><code>frontiir/response/node_red_response.go</code></td><td>5</td><td><code>revive</code></td><td>exported: exported type ONUProfile should have comment or be unexported</td></tr>
+<tr class="low"><td>271</td><td><code>frontiir/response/node_red_response.go</code></td><td>11</td><td><code>revive</code></td><td>exported: exported type ONUInfo should have comment or be unexported</td></tr>
+<tr class="low"><td>272</td><td><code>frontiir/response/node_red_response.go</code></td><td>25</td><td><code>revive</code></td><td>exported: exported type OLTInfo should have comment or be unexported</td></tr>
+<tr class="low"><td>273</td><td><code>frontiir/response/node_red_response.go</code></td><td>34</td><td><code>revive</code></td><td>exported: exported type CA1Info should have comment or be unexported</td></tr>
+<tr class="low"><td>274</td><td><code>frontiir/response/node_red_response.go</code></td><td>40</td><td><code>revive</code></td><td>exported: exported type UplinkBox should have comment or be unexported</td></tr>
+<tr class="low"><td>275</td><td><code>frontiir/response/node_red_response.go</code></td><td>45</td><td><code>revive</code></td><td>exported: exported type UplinkInfo should have comment or be unexported</td></tr>
+<tr class="low"><td>276</td><td><code>frontiir/response/node_red_response.go</code></td><td>52</td><td><code>revive</code></td><td>exported: exported type NodeInfoData should have comment or be unexported</td></tr>
+<tr class="low"><td>277</td><td><code>frontiir/response/node_red_response.go</code></td><td>83</td><td><code>revive</code></td><td>exported: exported method NodeInfoData.ToTicketNodeInfo should have comment or be unexported</td></tr>
+<tr class="low"><td>278</td><td><code>frontiir/response/node_red_response.go</code></td><td>107</td><td><code>revive</code></td><td>exported: exported type NodeInfoResponse should have comment or be unexported</td></tr>
+<tr class="low"><td>279</td><td><code>frontiir/response/ticket_full_info.go</code></td><td>72</td><td><code>revive</code></td><td>exported: exported function NewTicketFullInfo should have comment or be unexported</td></tr>
+<tr class="low"><td>280</td><td><code>frontiir/response/ticket_response.go</code></td><td>9</td><td><code>revive</code></td><td>exported: exported type TicketDetail should have comment or be unexported</td></tr>
+<tr class="low"><td>281</td><td><code>frontiir/response/ticket_response.go</code></td><td>17</td><td><code>revive</code></td><td>exported: comment on exported type TicketListResponse should be of the form "TicketListResponse ..." (with optional leading article)</td></tr>
+<tr class="low"><td>282</td><td><code>frontiir/response/ticket_response.go</code></td><td>23</td><td><code>revive</code></td><td>var-naming: type TicketsIdList should be TicketsIDList</td></tr>
+<tr class="low"><td>283</td><td><code>frontiir/response/ticket_response.go</code></td><td>24</td><td><code>revive</code></td><td>var-naming: struct field CpeId should be CpeID</td></tr>
+<tr class="low"><td>284</td><td><code>frontiir/response/ticket_response.go</code></td><td>32</td><td><code>revive</code></td><td>var-naming: struct field CpeId should be CpeID</td></tr>
+<tr class="low"><td>285</td><td><code>frontiir/response/ticket_response.go</code></td><td>40</td><td><code>revive</code></td><td>exported: exported type Pagination should have comment or be unexported</td></tr>
+<tr class="low"><td>286</td><td><code>frontiir/response/ticket_types_response.go</code></td><td>3</td><td><code>revive</code></td><td>exported: exported type TicketTypeItem should have comment or be unexported</td></tr>
+<tr class="low"><td>287</td><td><code>frontiir/response/ticket_types_response.go</code></td><td>8</td><td><code>revive</code></td><td>exported: exported type TicketTypesResponse should have comment or be unexported</td></tr>
+<tr class="low"><td>288</td><td><code>frontiir/response/ticket_types_response.go</code></td><td>13</td><td><code>revive</code></td><td>exported: exported type TicketProblemItem should have comment or be unexported</td></tr>
+<tr class="low"><td>289</td><td><code>frontiir/response/ticket_types_response.go</code></td><td>19</td><td><code>revive</code></td><td>exported: exported type TicketProblemsResponse should have comment or be unexported</td></tr>
+<tr class="low"><td>290</td><td><code>frontiir/services/customfields_service.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>291</td><td><code>frontiir/services/erp_customerInfo_service.go</code></td><td>23</td><td><code>revive</code></td><td>var-naming: func parameter apiUrl should be apiURL</td></tr>
+<tr class="low"><td>292</td><td><code>frontiir/services/erp_customerInfo_service.go</code></td><td>46</td><td><code>revive</code></td><td>var-naming: func parameter subscriptionId should be subscriptionID</td></tr>
+<tr class="low"><td>293</td><td><code>frontiir/services/erp_customerInfo_service.go</code></td><td>54</td><td><code>revive</code></td><td>var-naming: func parameter subscriptionId should be subscriptionID</td></tr>
+<tr class="low"><td>294</td><td><code>frontiir/services/erp_customerInfo_service.go</code></td><td>62</td><td><code>revive</code></td><td>exported: exported function GetPlanSummary should have comment or be unexported</td></tr>
+<tr class="low"><td>295</td><td><code>frontiir/services/erp_customerInfo_service.go</code></td><td>63</td><td><code>revive</code></td><td>var-naming: var apiUrl should be apiURL</td></tr>
+<tr class="low"><td>296</td><td><code>frontiir/services/erp_customerInfo_service.go</code></td><td>87</td><td><code>revive</code></td><td>var-naming: func GetTicketPlanDetailWithServiceIdAndCPE should be GetTicketPlanDetailWithServiceIDAndCPE</td></tr>
+<tr class="low"><td>297</td><td><code>frontiir/services/erp_customerInfo_service.go</code></td><td>114</td><td><code>revive</code></td><td>var-naming: func ticketServiceIdNotFoundResponse should be ticketServiceIDNotFoundResponse</td></tr>
+<tr class="low"><td>298</td><td><code>frontiir/services/init_service.go</code></td><td>27</td><td><code>revive</code></td><td>exported: exported type InitService should have comment or be unexported</td></tr>
+<tr class="low"><td>299</td><td><code>frontiir/services/init_service.go</code></td><td>31</td><td><code>revive</code></td><td>exported: exported type RootCauseMapping should have comment or be unexported</td></tr>
+<tr class="low"><td>300</td><td><code>frontiir/services/init_service.go</code></td><td>42</td><td><code>revive</code></td><td>exported: exported var INIT should have comment or be unexported</td></tr>
+<tr class="low"><td>301</td><td><code>frontiir/services/init_service.go</code></td><td>84</td><td><code>revive</code></td><td>exported: exported method InitService.LoadEnv should have comment or be unexported</td></tr>
+<tr class="low"><td>302</td><td><code>frontiir/services/init_service.go</code></td><td>112</td><td><code>revive</code></td><td>exported: exported method InitService.InitLogger should have comment or be unexported</td></tr>
+<tr class="low"><td>303</td><td><code>frontiir/services/init_service.go</code></td><td>132</td><td><code>revive</code></td><td>exported: exported method InitService.InitDatabase should have comment or be unexported</td></tr>
+<tr class="low"><td>304</td><td><code>frontiir/services/init_service.go</code></td><td>196</td><td><code>revive</code></td><td>exported: exported function ReloadActiveStatuses should have comment or be unexported</td></tr>
+<tr class="low"><td>305</td><td><code>frontiir/services/init_service.go</code></td><td>228</td><td><code>revive</code></td><td>exported: exported function GetActiveStatuses should have comment or be unexported</td></tr>
+<tr class="low"><td>306</td><td><code>frontiir/services/init_service.go</code></td><td>236</td><td><code>revive</code></td><td>exported: exported method InitService.InitQueues should have comment or be unexported</td></tr>
+<tr class="low"><td>307</td><td><code>frontiir/services/init_service.go</code></td><td>246</td><td><code>revive</code></td><td>exported: exported method InitService.InitializeRtDatabaseAdapter should have comment or be unexported</td></tr>
+<tr class="low"><td>308</td><td><code>frontiir/services/init_service.go</code></td><td>251</td><td><code>revive</code></td><td>exported: exported method InitService.InitRTRest2Instance should have comment or be unexported</td></tr>
+<tr class="low"><td>309</td><td><code>frontiir/services/init_service.go</code></td><td>260</td><td><code>revive</code></td><td>exported: exported method InitService.InitHideCustomFieldMappings should have comment or be unexported</td></tr>
+<tr class="low"><td>310</td><td><code>frontiir/services/init_service.go</code></td><td>273</td><td><code>revive</code></td><td>exported: exported method InitService.InitializeFirstByte should have comment or be unexported</td></tr>
+<tr class="low"><td>311</td><td><code>frontiir/services/init_service.go</code></td><td>310</td><td><code>revive</code></td><td>exported: exported method InitService.InitCustomFieldCollection should have comment or be unexported</td></tr>
+<tr class="low"><td>312</td><td><code>frontiir/services/init_service.go</code></td><td>336</td><td><code>revive</code></td><td>exported: exported function GetTicketTypeCustomFieldID should have comment or be unexported</td></tr>
+<tr class="low"><td>313</td><td><code>frontiir/services/init_service.go</code></td><td>337</td><td><code>revive</code></td><td>exported: exported function GetTicketProblemCustomFieldID should have comment or be unexported</td></tr>
+<tr class="low"><td>314</td><td><code>frontiir/services/init_service.go</code></td><td>352</td><td><code>revive</code></td><td>exported: exported method InitService.ConnectDatabase should have comment or be unexported</td></tr>
+<tr class="low"><td>315</td><td><code>frontiir/services/init_service.go</code></td><td>380</td><td><code>revive</code></td><td>exported: exported function GetRootCauseMappings should have comment or be unexported</td></tr>
+<tr class="low"><td>316</td><td><code>frontiir/services/init_service.go</code></td><td>388</td><td><code>revive</code></td><td>exported: exported function GetDisplayValue should have comment or be unexported</td></tr>
+<tr class="low"><td>317</td><td><code>frontiir/services/init_service.go</code></td><td>397</td><td><code>revive</code></td><td>exported: exported function GetHideCVMappings should have comment or be unexported</td></tr>
+<tr class="low"><td>318</td><td><code>frontiir/services/init_service.go</code></td><td>401</td><td><code>revive</code></td><td>exported: exported function GetDisplayKey should have comment or be unexported</td></tr>
+<tr class="low"><td>319</td><td><code>frontiir/services/node_red_service.go</code></td><td>20</td><td><code>revive</code></td><td>var-naming: func parameter apiUrl should be apiURL</td></tr>
+<tr class="low"><td>320</td><td><code>frontiir/services/node_red_service.go</code></td><td>74</td><td><code>revive</code></td><td>exported: exported function GetNodeInfoByCpeID should have comment or be unexported</td></tr>
+<tr class="low"><td>321</td><td><code>frontiir/services/node_red_service.go</code></td><td>76</td><td><code>revive</code></td><td>var-naming: var apiUrl should be apiURL</td></tr>
+<tr class="low"><td>322</td><td><code>frontiir/services/ticket_service.go</code></td><td>59</td><td><code>revive</code></td><td>exported: exported method TicketService.GetTicketByID should have comment or be unexported</td></tr>
+<tr class="low"><td>323</td><td><code>frontiir/services/ticket_service.go</code></td><td>107</td><td><code>revive</code></td><td>exported: exported method TicketService.GetTicketByCpeID should have comment or be unexported</td></tr>
+<tr class="low"><td>324</td><td><code>frontiir/services/ticket_service.go</code></td><td>198</td><td><code>revive</code></td><td>var-naming: var serviceId should be serviceID</td></tr>
+<tr class="low"><td>325</td><td><code>frontiir/services/ticket_service.go</code></td><td>271</td><td><code>revive</code></td><td>var-naming: method UpdateTicketById should be UpdateTicketByID</td></tr>
+<tr class="low"><td>326</td><td><code>frontiir/services/ticket_service.go</code></td><td>284</td><td><code>revive</code></td><td>exported: exported function GetTicketByID should have comment or be unexported</td></tr>
+<tr class="low"><td>327</td><td><code>frontiir/services/ticket_service.go</code></td><td>288</td><td><code>revive</code></td><td>exported: exported function GetTicketByCpeID should have comment or be unexported</td></tr>
+<tr class="low"><td>328</td><td><code>frontiir/services/ticket_service.go</code></td><td>292</td><td><code>revive</code></td><td>exported: exported function CreateTicket should have comment or be unexported</td></tr>
+<tr class="low"><td>329</td><td><code>frontiir/services/ticket_service.go</code></td><td>296</td><td><code>revive</code></td><td>var-naming: func UpdateTicketById should be UpdateTicketByID</td></tr>
+<tr class="low"><td>330</td><td><code>frontiir/utils/utils.go</code></td><td>1</td><td><code>revive</code></td><td>package-comments: should have a package comment</td></tr>
+<tr class="low"><td>331</td><td><code>frontiir/utils/utils.go</code></td><td>25</td><td><code>revive</code></td><td>exported: exported method RestErr.IsRequest should have comment or be unexported</td></tr>
+<tr class="low"><td>332</td><td><code>frontiir/utils/utils.go</code></td><td>29</td><td><code>revive</code></td><td>exported: exported type ArrayRestErr should have comment or be unexported</td></tr>
+<tr class="low"><td>333</td><td><code>frontiir/utils/utils.go</code></td><td>35</td><td><code>revive</code></td><td>exported: exported method ArrayRestErr.IsRequest should have comment or be unexported</td></tr>
+<tr class="low"><td>334</td><td><code>frontiir/utils/utils.go</code></td><td>39</td><td><code>revive</code></td><td>exported: exported function BadRequest should have comment or be unexported</td></tr>
+<tr class="low"><td>335</td><td><code>frontiir/utils/utils.go</code></td><td>46</td><td><code>revive</code></td><td>exported: exported function InputErr should have comment or be unexported</td></tr>
+<tr class="low"><td>336</td><td><code>frontiir/utils/utils.go</code></td><td>53</td><td><code>revive</code></td><td>exported: exported function ValidationErr should have comment or be unexported</td></tr>
+<tr class="low"><td>337</td><td><code>frontiir/utils/utils.go</code></td><td>61</td><td><code>revive</code></td><td>exported: exported function SuccessMessage should have comment or be unexported</td></tr>
+<tr class="low"><td>338</td><td><code>frontiir/utils/utils.go</code></td><td>68</td><td><code>revive</code></td><td>exported: exported function StringToInt32 should have comment or be unexported</td></tr>
+<tr class="low"><td>339</td><td><code>frontiir/utils/utils.go</code></td><td>76</td><td><code>revive</code></td><td>exported: exported function StringToUint should have comment or be unexported</td></tr>
+<tr class="low"><td>340</td><td><code>frontiir/utils/utils.go</code></td><td>92</td><td><code>revive</code></td><td>receiver-naming: receiver name e should be consistent with previous receiver name req for RestErr</td></tr>
+<tr class="low"><td>341</td><td><code>frontiir/utils/utils.go</code></td><td>106</td><td><code>revive</code></td><td>exported: comment on exported function InternalErr should be of the form "InternalErr ..."</td></tr>
+<tr class="low"><td>342</td><td><code>frontiir/utils/utils.go</code></td><td>114</td><td><code>revive</code></td><td>exported: exported function NotFound should have comment or be unexported</td></tr>
+<tr class="low"><td>343</td><td><code>frontiir/utils/utils.go</code></td><td>121</td><td><code>revive</code></td><td>exported: exported function ErrResponse should have comment or be unexported</td></tr>
+<tr class="low"><td>344</td><td><code>frontiir/utils/utils.go</code></td><td>155</td><td><code>revive</code></td><td>exported: exported function FormatJSON should have comment or be unexported</td></tr>
+<tr class="low"><td>345</td><td><code>frontiir/utils/utils.go</code></td><td>168</td><td><code>revive</code></td><td>exported: exported function GetEnvValue should have comment or be unexported</td></tr>
+<tr class="info"><td>346</td><td><code>frontiir/api/analytics_routes.go</code></td><td>18</td><td><code>whitespace</code></td><td>unnecessary trailing newline</td></tr>
+<tr class="info"><td>347</td><td><code>frontiir/api/ticket_group_routes.go</code></td><td>55</td><td><code>whitespace</code></td><td>unnecessary trailing newline</td></tr>
+<tr class="info"><td>348</td><td><code>frontiir/api/ticket_group_routes.go</code></td><td>97</td><td><code>whitespace</code></td><td>unnecessary trailing newline</td></tr>
+<tr class="info"><td>349</td><td><code>frontiir/api/ticket_serach.go</code></td><td>24</td><td><code>whitespace</code></td><td>unnecessary trailing newline</td></tr>
+<tr class="info"><td>350</td><td><code>frontiir/cache/cache.go</code></td><td>48</td><td><code>whitespace</code></td><td>unnecessary trailing newline</td></tr>
+<tr class="info"><td>351</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>83</td><td><code>whitespace</code></td><td>unnecessary leading newline</td></tr>
+<tr class="info"><td>352</td><td><code>frontiir/helpers/erp_customer_info_helper.go</code></td><td>109</td><td><code>whitespace</code></td><td>unnecessary leading newline</td></tr>
+<tr class="info"><td>353</td><td><code>frontiir/helpers/ticket_helper.go</code></td><td>93</td><td><code>whitespace</code></td><td>unnecessary trailing newline</td></tr>
+<tr class="info"><td>354</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>23</td><td><code>whitespace</code></td><td>unnecessary leading newline</td></tr>
+<tr class="info"><td>355</td><td><code>frontiir/middleware/cache_redis.go</code></td><td>63</td><td><code>whitespace</code></td><td>unnecessary trailing newline</td></tr>
+</tbody></table></div>
+<h2>Recommended Next Actions</h2>
+<ol>
+<li><code>gosec</code> — 23 issue(s)</li>
+<li><code>errcheck</code> — 7 issue(s)</li>
+<li><code>funlen</code> — 3 issue(s)</li>
+<li><code>revive</code> — 209 issue(s)</li>
+<li><code>ineffassign</code> — 1 issue(s)</li>
+</ol>
+<footer>Generated by golangci-report.sh v3.0 &bull; 2026-07-09 &bull; golangci-lint 2.12.2</footer>
+</body>
+</html>
