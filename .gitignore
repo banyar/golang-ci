@@ -11,3 +11,7 @@ test
 
 # Redis runtime dump
 dump.rdb
+
+# generated lint reports
+linter-report/
+gl-code-quality-report.json
