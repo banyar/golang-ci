@@ -1,0 +1,103 @@
+version: "2"
+
+# Options for analysis running.
+run:
+  # The default concurrency value is the number of available CPU.
+  concurrency: 4
+  # Timeout for analysis, e.g. 30s, 5m.
+  # Default: 0 (disabled)
+  timeout: 5m
+  # Include test files or not.
+  # Default: true
+  tests: false
+  # List of build tags, all linters use it.
+  # Default: [].
+  build-tags: []
+  # If set we pass it to "go list -mod={option}".
+  # Allowed values: readonly|vendor|mod
+  # By default, it isn't set.
+  modules-download-mode: readonly
+  # Allow multiple parallel golangci-lint instances running.
+  # Default: false
+  allow-parallel-runners: true
+  # Define the Go version limit.
+  # Default: use Go version from the go.mod file, fallback on 1.22
+  # go: '1.25.0'
+
+issues:
+  # Maximum issues count per one linter.
+  # Set to 0 to disable.
+  # Default: 50
+  max-issues-per-linter: 0
+  # Maximum count of issues with the same text.
+  # Set to 0 to disable.
+  # Default: 3
+  max-same-issues: 0
+
+# output configuration options
+output:
+  # The formats used to render issues.
+  formats:
+    code-climate:
+      path: gl-code-quality-report.json
+    text:
+      path: stdout
+      colors: true
+  # Add a prefix to the output file references.
+  # Default is no prefix.
+  path-prefix: ""
+  # Sort order for results
+  # Default: ['linter', 'file']
+  sort-order: ['file', 'linter', 'severity']
+  show-stats: true
+
+linters:
+  # Enable specific linter
+  # https://golangci-lint.run/usage/linters/#enabled-by-default
+  enable:
+    - asciicheck
+    - bidichk
+    - errcheck
+    - errorlint
+    - exhaustive
+    - funlen
+    - gocritic
+    - godox
+    - gosec
+    - govet
+    - ineffassign
+    - misspell
+    - mnd  # renamed from gomnd
+    - nolintlint
+    - reassign
+    - revive
+    - staticcheck
+    - thelper
+    - unconvert
+    - unparam
+    - unused
+    - usestdlibvars
+    - wastedassign
+    - whitespace
+  
+  # Exclusions for paths (migrated from run.skip-dirs and run.skip-dirs-use-default)
+  exclusions:
+    paths:
+      - vendor/
+
+formatters:
+  # Formatters moved from linters section
+  enable:
+    - gci
+    - gofmt
+    - gofumpt
+    - goimports
+    - golines
+severity:
+  # Set the default severity for issues.
+  default: error
+  rules:
+    - linters:
+        - funlen
+        - mnd
+      severity: warning
