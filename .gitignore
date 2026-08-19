@@ -15,3 +15,5 @@ dump.rdb
 # generated lint reports
 linter-report/
 gl-code-quality-report.json
+before-fixed/
+after-fixed/
