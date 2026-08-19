@@ -1,0 +1,9 @@
+{
+  "_comment": "API key -> role map for the golangci dashboard's RBAC middleware (backend/api/middleware.go). Role hierarchy: viewer < approver < operator < admin. Keys below are real (crypto/secrets-generated, 2026-08-05) -- rotate via a fresh secrets.token_hex(32) per key if compromised.",
+  "keys": {
+    "5eee094f21f9e7fcf275e44307392e669f1c8a8859ed828c4350cba10068e07d": "viewer",
+    "c674dc666af8ac125b4d4cb976521792a1a859a42eb12c1e4106cd4d8fb8a405": "approver",
+    "db31ba0d1f7ee5d9ed00bf78bed0e636bbdfd9bc7fb96c4d2c894b496e9fb044": "operator",
+    "c48a461ad1d7a46aa738ff9c8b4d6d42bf50c04990c183e066bc5d3bf99b304a": "admin"
+  }
+}

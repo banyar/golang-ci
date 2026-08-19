@@ -1,0 +1,2224 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "golangci-lint",
+          "version": "2.12.2",
+          "informationUri": "https://golangci-lint.run",
+          "rules": [
+            {
+              "id": "errcheck",
+              "name": "errcheck",
+              "shortDescription": {
+                "text": "golangci-lint: errcheck"
+              }
+            },
+            {
+              "id": "errorlint",
+              "name": "errorlint",
+              "shortDescription": {
+                "text": "golangci-lint: errorlint"
+              }
+            },
+            {
+              "id": "funlen",
+              "name": "funlen",
+              "shortDescription": {
+                "text": "golangci-lint: funlen"
+              }
+            },
+            {
+              "id": "gci",
+              "name": "gci",
+              "shortDescription": {
+                "text": "golangci-lint: gci"
+              }
+            },
+            {
+              "id": "gofumpt",
+              "name": "gofumpt",
+              "shortDescription": {
+                "text": "golangci-lint: gofumpt"
+              }
+            },
+            {
+              "id": "goimports",
+              "name": "goimports",
+              "shortDescription": {
+                "text": "golangci-lint: goimports"
+              }
+            },
+            {
+              "id": "golines",
+              "name": "golines",
+              "shortDescription": {
+                "text": "golangci-lint: golines"
+              }
+            },
+            {
+              "id": "gosec",
+              "name": "gosec",
+              "shortDescription": {
+                "text": "golangci-lint: gosec"
+              }
+            },
+            {
+              "id": "mnd",
+              "name": "mnd",
+              "shortDescription": {
+                "text": "golangci-lint: mnd"
+              }
+            },
+            {
+              "id": "nolintlint",
+              "name": "nolintlint",
+              "shortDescription": {
+                "text": "golangci-lint: nolintlint"
+              }
+            },
+            {
+              "id": "revive",
+              "name": "revive",
+              "shortDescription": {
+                "text": "golangci-lint: revive"
+              }
+            },
+            {
+              "id": "unused",
+              "name": "unused",
+              "shortDescription": {
+                "text": "golangci-lint: unused"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "revive",
+          "level": "note",
+          "message": {
+            "text": "package-comments: should have a package comment"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/fixes.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gofumpt",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/fixes.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "goimports",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/fixes.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gci",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/fixes.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "funlen",
+          "level": "warning",
+          "message": {
+            "text": "Function 'CreateFix' is too long (100 > 60)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/fixes.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 36,
+                  "startColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gofumpt",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/middleware.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "goimports",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/middleware.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 2, in <assign> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/middleware.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 14
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 3, in <assign> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/middleware.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 14
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 4, in <assign> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/middleware.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 14
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/middleware.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gofumpt",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/plans.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "goimports",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/plans.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gci",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/plans.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "funlen",
+          "level": "warning",
+          "message": {
+            "text": "Function 'ApprovePlan' is too long (61 > 60)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/plans.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 132,
+                  "startColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gofumpt",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "goimports",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gci",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "funlen",
+          "level": "warning",
+          "message": {
+            "text": "Function 'CreateRollback' is too long (136 > 60)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gofumpt",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/router.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "goimports",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/router.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 6,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gofumpt",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/scans.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "goimports",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/scans.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gci",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/scans.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 200, in <condition> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/api/scans.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 195,
+                  "startColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gofumpt",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/cmd/dashboard/main.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 22,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "goimports",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/cmd/dashboard/main.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "funlen",
+          "level": "warning",
+          "message": {
+            "text": "Function 'main' has too many statements (53 > 40)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/cmd/dashboard/main.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 39,
+                  "startColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 4, in <argument> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/cmd/dashboard/main.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G112: Potential Slowloris Attack because ReadHeaderTimeout is not configured in the http.Server"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/cmd/dashboard/main.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 102,
+                  "startColumn": 10
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 10, in <argument> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/cmd/dashboard/main.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 119,
+                  "startColumn": 75
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 10, in <argument> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/cmd/dashboard/main.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 127,
+                  "startColumn": 29
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "funlen",
+          "level": "warning",
+          "message": {
+            "text": "Function 'Apply' is too long (81 > 60)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/fixer.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 29,
+                  "startColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/fixer.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `os.RemoveAll` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/fixer.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 20
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `os.RemoveAll` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/fixer.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 57,
+                  "startColumn": 20
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/fixer.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 63,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/fixer.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 78,
+                  "startColumn": 8
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `(*os/exec.Cmd).Run` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/fixer.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 79,
+                  "startColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nolintlint",
+          "level": "note",
+          "message": {
+            "text": "directive `//nolint:errcheck // best-effort cleanup; the branch itself is untouched by this` is unused for linter \"errcheck\""
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/fixer.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 80,
+                  "startColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/fixer.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 83,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/fixer.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 102,
+                  "startColumn": 20
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/fixer.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 111,
+                  "startColumn": 17
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/fixer.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/fixer.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 128,
+                  "startColumn": 17
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 21,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `os.RemoveAll` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 30,
+                  "startColumn": 20
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 37,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 8
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `(*os/exec.Cmd).Run` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nolintlint",
+          "level": "note",
+          "message": {
+            "text": "directive `//nolint:errcheck // best-effort cleanup, RemoveAll above is the fallback` is unused for linter \"errcheck\""
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 48,
+                  "startColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 50,
+                  "startColumn": 15
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 7
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/fixer/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 58,
+                  "startColumn": 17
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gofumpt",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/parser/parser.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/planner/codecontext.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 41,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/planner/codecontext.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 73,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "golines",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/planner/impact.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 100,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with a potential tainted input or cmd arguments"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/planner/impact.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 104,
+                  "startColumn": 9
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errorlint",
+          "level": "note",
+          "message": {
+            "text": "type assertion on error will fail on wrapped errors. Use errors.As to check for specific errors"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/planner/impact.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 114,
+                  "startColumn": 21
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "golines",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/planner/rule_templates.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 115,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gofumpt",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/planner/service.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "funlen",
+          "level": "warning",
+          "message": {
+            "text": "Function 'FulfillPlan' is too long (89 > 60)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/planner/service.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 121,
+                  "startColumn": 19
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "golines",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/planner/service.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 135,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/scanner/scanner.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 31,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `os.RemoveAll` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/scanner/scanner.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 20
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/scanner/scanner.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 53,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/scanner/scanner.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 67,
+                  "startColumn": 8
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `(*os/exec.Cmd).Run` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/scanner/scanner.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 68,
+                  "startColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "nolintlint",
+          "level": "note",
+          "message": {
+            "text": "directive `//nolint:errcheck // best-effort cleanup, RemoveAll above is the fallback` is unused for linter \"errcheck\""
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/scanner/scanner.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 69,
+                  "startColumn": 3
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G204: Subprocess launched with variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/scanner/scanner.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 82,
+                  "startColumn": 13
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "errcheck",
+          "level": "warning",
+          "message": {
+            "text": "Error return value of `os.RemoveAll` is not checked"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/scanner/scanner.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 103,
+                  "startColumn": 20
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/scanner/scanner.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 107,
+                  "startColumn": 14
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unused",
+          "level": "note",
+          "message": {
+            "text": "const maxOpenConns is unused"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/db.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 15,
+                  "startColumn": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unused",
+          "level": "note",
+          "message": {
+            "text": "const maxIdleConns is unused"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/db.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "unused",
+          "level": "note",
+          "message": {
+            "text": "const connMaxLifetime is unused"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/db.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 17,
+                  "startColumn": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 20, in <argument> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/db.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 54,
+                  "startColumn": 24
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 5, in <argument> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/db.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 55,
+                  "startColumn": 24
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 30, in <argument> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/db.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 56,
+                  "startColumn": 27
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 16, in <argument> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/models.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 20,
+                  "startColumn": 20
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "revive",
+          "level": "note",
+          "message": {
+            "text": "unused-parameter: parameter 'tx' seems to be unused, consider removing or renaming it as _"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/models.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 33
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "revive",
+          "level": "note",
+          "message": {
+            "text": "unused-parameter: parameter 'tx' seems to be unused, consider removing or renaming it as _"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/models.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 79,
+                  "startColumn": 34
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "golines",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/models.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 100,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "revive",
+          "level": "note",
+          "message": {
+            "text": "unused-parameter: parameter 'tx' seems to be unused, consider removing or renaming it as _"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/models.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 142,
+                  "startColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "revive",
+          "level": "note",
+          "message": {
+            "text": "unused-parameter: parameter 'tx' seems to be unused, consider removing or renaming it as _"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/models.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 167,
+                  "startColumn": 35
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "revive",
+          "level": "note",
+          "message": {
+            "text": "unused-parameter: parameter 'tx' seems to be unused, consider removing or renaming it as _"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/models.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 196,
+                  "startColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "revive",
+          "level": "note",
+          "message": {
+            "text": "unused-parameter: parameter 'tx' seems to be unused, consider removing or renaming it as _"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/storage/models.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 218,
+                  "startColumn": 38
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gofumpt",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/fix.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "goimports",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/fix.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 5, in <argument> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/fix.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 46,
+                  "startColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "funlen",
+          "level": "warning",
+          "message": {
+            "text": "Function 'processFix' is too long (132 > 60)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/fix.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 64,
+                  "startColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gofumpt",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/queue.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "goimports",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/queue.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gci",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/queue.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 5, in <argument> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/queue.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 100,
+                  "startColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 5, in <argument> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/queue.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 126,
+                  "startColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gofumpt",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "goimports",
+          "level": "note",
+          "message": {
+            "text": "File is not properly formatted"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 1
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "mnd",
+          "level": "note",
+          "message": {
+            "text": "Magic number: 5, in <argument> detected"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 47,
+                  "startColumn": 32
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "funlen",
+          "level": "warning",
+          "message": {
+            "text": "Function 'processRollback' is too long (111 > 60)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/rollback.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 65,
+                  "startColumn": 18
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "gosec",
+          "level": "error",
+          "message": {
+            "text": "G304: Potential file inclusion via variable"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "../golangci/backend/worker/severity.go",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 16,
+                  "startColumn": 12
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

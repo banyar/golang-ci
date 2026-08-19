@@ -1,0 +1,4 @@
+Dashboard ထဲ ဘယ်လို ဖြည့်ရမလဲ
+Field	ထည့်ရမည့်တန်ဖိုး
+Repo path	/home/ubuntu/FrontiirProjects/RT/rt-external-api-with-auto-remote-resolved
+Branch	ticket-create-sla

@@ -1,6 +1,13 @@
 # golangci-lint binary (if downloaded locally)
 golangci-lint
 golangci-lint.exe
+test
 
 # lint cache
 .golangci-lint-cache/
+
+# local lint-config override (may contain machine-local absolute paths)
+.env
+
+# Redis runtime dump
+dump.rdb

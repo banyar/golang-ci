@@ -1,0 +1,19 @@
+{
+  "_comment": "Linter name -> default severity, used by the Parser Service (M2+) when golangci-lint's own JSON output leaves severity blank. Enum values per golangci/plans/08-validation-rules.md: critical|high|medium|low|info.",
+  "default_severity": "medium",
+  "linters": {
+    "gosec": "critical",
+    "errcheck": "high",
+    "staticcheck": "high",
+    "govet": "high",
+    "gocyclo": "medium",
+    "nestif": "medium",
+    "funlen": "medium",
+    "bodyclose": "high",
+    "ineffassign": "low",
+    "misspell": "low",
+    "revive": "low",
+    "gofumpt": "info",
+    "gocritic": "info"
+  }
+}

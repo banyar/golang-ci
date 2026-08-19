@@ -1,0 +1,5 @@
+{
+  "_comment": "Placeholder for the Plan Service's AI Layer client (M3, planner/ — not wired to anything yet in M1).",
+  "model": "claude-sonnet-5",
+  "prompt_version": "v1"
+}

@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # golangci-report.sh — Frontiir Go Lint Report Generator v3.0
 #
-# Runs golangci-lint for each config file listed in golangci/lint-configs.txt,
-# generating per-config reports under $REPORT_DIR/<config-name>/:
+# Runs golangci-lint for each config file resolved via GOLANGCI_CONFIGS or
+# golangci/.env's LINT_CONFIG (see Configuration below), generating per-config
+# reports under $REPORT_DIR/<config-name>/:
 #
 #   {TS}.json       Raw golangci-lint JSON output
 #   {TS}-en.md      English Markdown report
@@ -13,7 +14,10 @@
 # A combined summary-{TS}.md is written to $REPORT_DIR/.
 #
 # Configuration — all overridable via environment variables:
-#   GOLANGCI_CONFIGS  Space-separated config files (overrides lint-configs.txt)
+#   GOLANGCI_CONFIGS  Space-separated config files (overrides golangci/.env)
+#   golangci/.env     LINT_CONFIG=<path> single-config override, used when
+#                     GOLANGCI_CONFIGS is unset. Required once present — no
+#                     silent fallback.
 #   REPORT_DIR        Output base directory       (default: golangci/linter-report)
 #   KEEP_HISTORY      Run-sets to retain;         (default: 0 = delete all old)
 #                     0 = delete all; N = keep last N
@@ -40,6 +44,7 @@ ENABLE_SARIF="${ENABLE_SARIF:-true}"
 CONFIG_LIST=()
 FAILED_CONFIGS=()
 SUMMARY_ROWS=()
+HAS_LINT_ISSUES=0
 
 REPORT_JSON=""
 REPORT_EN=""
@@ -90,17 +95,56 @@ ok()   { printf "  ${GRN}✓${NC}  %s\n" "$1"; }
 warn() { printf "  ${YLW}⚠${NC}  %s\n" "$1"; }
 fail() { printf "  ${RED}✗${NC}  %s\n" "$1" >&2; }
 
+# ── 0a. Config override via golangci/.env (LINT_CONFIG=<path>) ────────────────
+# Priority: GOLANGCI_CONFIGS (env) > golangci/.env (LINT_CONFIG).
+# .env is parsed (grep/cut), never sourced — never executed as shell code.
+# Hard requirement: once golangci/.env exists, LINT_CONFIG must resolve to a
+# real file. No silent fallback, ever.
+load_dotenv_lint_config() {
+  local env_file="golangci/.env"
+  if [ ! -f "$env_file" ]; then
+    fail "${env_file} not found — create it with LINT_CONFIG=<path-to-.golangci.yml>, or set GOLANGCI_CONFIGS to override explicitly"
+    exit 2
+  fi
+
+  local raw
+  raw=$(grep -E '^\s*LINT_CONFIG\s*=' "$env_file" | tail -n1 | cut -d '=' -f2- || true)
+  raw=$(printf '%s' "$raw" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')
+
+  if [ -z "$raw" ]; then
+    fail "${env_file} exists but LINT_CONFIG is not set — no silent fallback"
+    exit 2
+  fi
+
+  # Expand a leading ~ against $HOME (bare ~ or ~/...; ~user is not supported).
+  # shellcheck disable=SC2088 # intentional literal-string match, not expansion
+  case "$raw" in
+    "~")   raw="$HOME" ;;
+    "~/"*) raw="${HOME}${raw#\~}" ;;
+  esac
+
+  # Relative paths resolve relative to golangci/ (this project's own dir),
+  # invariant to how make/the script is invoked.
+  case "$raw" in
+    /*) : ;;
+    *) raw="golangci/${raw}" ;;
+  esac
+
+  if [ ! -f "$raw" ]; then
+    fail "LINT_CONFIG (from ${env_file}) points to a missing file: ${raw}"
+    exit 2
+  fi
+
+  CONFIG_LIST=("$raw")
+  ok "Using LINT_CONFIG from ${env_file}: ${raw}"
+}
+
 # ── 0. Load config list ────────────────────────────────────────────────────────
 load_config_list() {
   if [ -n "${GOLANGCI_CONFIGS:-}" ]; then
     read -ra CONFIG_LIST <<< "$GOLANGCI_CONFIGS"
   else
-    local cfg_file="golangci/lint-configs.txt"
-    if [ ! -f "$cfg_file" ]; then
-      fail "Config list not found: $cfg_file"
-      exit 2
-    fi
-    mapfile -t CONFIG_LIST < <(grep -v '^\s*#' "$cfg_file" | grep -v '^\s*$')
+    load_dotenv_lint_config
   fi
   if [ "${#CONFIG_LIST[@]}" -eq 0 ]; then
     fail "No config files defined"
@@ -211,7 +255,31 @@ collect_metadata() {
 run_linter() {
   local cfg="$1"
   local t0=$SECONDS
-  golangci-lint run --config "$cfg" --output.json.path "$REPORT_JSON" ./... \
+  # golangci-lint v2 resolves a relative --output.json.path against the
+  # --config file's directory, not the shell's cwd — fatal once --config is
+  # an external, absolute path (as with LINT_CONFIG). Always pass it absolute.
+  local abs_json
+  abs_json="$(cd "$(dirname "$REPORT_JSON")" && pwd)/$(basename "$REPORT_JSON")"
+  # golangci/ is its own Go module (see golangci/go.mod) — golangci-lint
+  # must run with it as cwd, so a relative --config also needs resolving
+  # to an absolute path before we cd there.
+  local abs_cfg
+  case "$cfg" in
+    /*) abs_cfg="$cfg" ;;
+    *) abs_cfg="$(cd "$(dirname "$cfg")" && pwd)/$(basename "$cfg")" ;;
+  esac
+  # Scan golangci/'s own code, excluding backend/frontiir/utils/ -- a
+  # verbatim vendored copy from rt-external-api-v1 (kept identical to that
+  # project on purpose). It's still type-checked as a normal dependency,
+  # just not lint-reported. `go list` returns module-qualified import paths
+  # (e.g. "golangci/backend/fixer") -- golangci-lint needs "./"-relative
+  # patterns instead, or it resolves them against cwd and doubles the
+  # "golangci/" segment.
+  local pkgs=()
+  while IFS= read -r pkg; do
+    pkgs+=("./${pkg#golangci/}")
+  done < <(cd golangci && go list ./... | grep -v '^golangci/backend/frontiir/')
+  (cd golangci && golangci-lint run --config "$abs_cfg" --output.json.path "$abs_json" "${pkgs[@]}") \
     && LINT_EXIT_CODE=0 \
     || LINT_EXIT_CODE=$?
   LINT_ELAPSED=$(( SECONDS - t0 ))
@@ -1049,6 +1117,7 @@ main() {
       row_status="✓ Clean"
     else
       row_status="⚠️ Issues"
+      HAS_LINT_ISSUES=1
     fi
     SUMMARY_ROWS+=("${cfg}|${config_name}|${TOTAL}|${RISK_SCORE}|${row_status}")
 
@@ -1064,6 +1133,11 @@ main() {
   if [ "${#FAILED_CONFIGS[@]}" -gt 0 ]; then
     printf "\n${RED}%d config(s) failed: %s${NC}\n" \
       "${#FAILED_CONFIGS[@]}" "${FAILED_CONFIGS[*]}" >&2
+    exit 1
+  fi
+
+  if [ "$HAS_LINT_ISSUES" -eq 1 ]; then
+    printf "\n${YLW}Lint issues were found — failing (see reports above).${NC}\n" >&2
     exit 1
   fi
 }

@@ -1,0 +1,693 @@
+basePath: /api/v1
+definitions:
+  api.approvePlanRequest:
+    properties:
+      approve:
+        description: |-
+          Approve defaults to true (JSON omitted -> zero value -> approve) --
+          the endpoint's own name is "approve"; explicit {"approve": false} is
+          how a reject happens (06-api-design.md has no separate reject route).
+        type: boolean
+      confirmed:
+        type: boolean
+    type: object
+  api.createFixRequest:
+    properties:
+      plan_id:
+        type: string
+    required:
+    - plan_id
+    type: object
+  api.createPlanRequest:
+    properties:
+      issue_ids:
+        items:
+          type: string
+        minItems: 1
+        type: array
+    required:
+    - issue_ids
+    type: object
+  api.createRollbackRequest:
+    properties:
+      fix_history_id:
+        type: string
+    required:
+    - fix_history_id
+    type: object
+  api.createScanRequest:
+    properties:
+      branch:
+        type: string
+      repo_ref:
+        type: string
+    required:
+    - branch
+    - repo_ref
+    type: object
+  golangci_backend_frontiir_utils.RestErr:
+    properties:
+      code:
+        description: Machine-readable business error code (e.g. "SLA_EXPIRED")
+        type: string
+      data:
+        description: Optional structured payload (e.g. conflicting ticket detail)
+      message:
+        description: User-friendly error message
+        type: string
+      status:
+        description: HTTP status code
+        type: integer
+    type: object
+  storage.FixHistory:
+    properties:
+      applied_by:
+        type: string
+      branch_name:
+        type: string
+      created_at:
+        type: string
+      diff_ref:
+        type: string
+      id:
+        type: string
+      plan_id:
+        type: string
+      post_fix_scan_id:
+        type: string
+      pre_fix_scan_id:
+        type: string
+      result:
+        description: applying|passed|failed -- "applying" added in M4, apply is worker-queued
+          like scan/plan
+        type: string
+      updated_at:
+        type: string
+    type: object
+  storage.FixPlan:
+    properties:
+      acceptance_criteria:
+        items:
+          type: integer
+        type: array
+      after_snippet:
+        type: string
+      approved_at:
+        type: string
+      approved_by:
+        description: |-
+          ApprovedBy/ApprovedAt implement Rule BR-3's "approver identity +
+          timestamp recorded" requirement (10-business-rules.md) -- absent
+          from the original M1 schema. ApprovedAt is nil until approve/reject.
+        type: string
+      batch_fingerprint:
+        description: |-
+          BatchFingerprint/PromptVersion implement the Risk register's own
+          mitigation ("cache plan by issue+source fingerprint; store model +
+          prompt version on FixPlan") -- absent from the original M1 schema.
+        type: string
+      before_snippet:
+        type: string
+      breaking_change:
+        type: boolean
+      code_context:
+        description: |-
+          CodeContext/FixStrategyCode/BeforeSnippet/AfterSnippet/SideEffects/
+          ImpactAnalysis/RecommendedTestCommands/AcceptanceCriteria added
+          2026-08-19 to match before-fixed/*.md's section depth (§2, §4-9) --
+          see planner.PlanResult's matching doc comments for what populates each.
+        type: string
+      created_at:
+        type: string
+      current_behavior:
+        description: required by 04-prd.md FR-4 / 05-ui-design.md's Plan Viewer --
+          missing from the original M1 schema
+        type: string
+      current_behavior_my:
+        type: string
+      files_impacted:
+        items:
+          type: integer
+        type: array
+      fix_strategy_code:
+        type: string
+      generated_by:
+        type: string
+      id:
+        type: string
+      impact_analysis:
+        items:
+          type: integer
+        type: array
+      issues:
+        items:
+          $ref: '#/definitions/storage.LintIssue'
+        type: array
+      prompt_version:
+        type: string
+      recommended_fix:
+        type: string
+      recommended_fix_my:
+        type: string
+      recommended_test_commands:
+        items:
+          type: integer
+        type: array
+      risk_level:
+        description: low|medium|high
+        type: string
+      root_cause:
+        type: string
+      root_cause_my:
+        description: |-
+          RootCauseMy/CurrentBehaviorMy/RecommendedFixMy are Burmese counterparts
+          to the 3 fields above, for the UI's language toggle -- additive, the
+          English fields are unchanged and remain the fallback when these are empty.
+        type: string
+      side_effects:
+        items:
+          type: integer
+        type: array
+      status:
+        description: |-
+          generating|pending|approved|rejected|applied|failed -- "generating"
+          and "failed" added in M3 for the async plan-job sub-states (a client
+          polling GET /plans/:id needs to tell "still working" from
+          "permanently failed, e.g. AI Layer unavailable" apart); the other 4
+          are 08-validation-rules.md's originally decided enum.
+        type: string
+      test_plan:
+        items:
+          type: integer
+        type: array
+      updated_at:
+        type: string
+    type: object
+  storage.LintIssue:
+    properties:
+      column:
+        type: integer
+      created_at:
+        type: string
+      file_path:
+        type: string
+      fingerprint:
+        type: string
+      id:
+        type: string
+      line:
+        type: integer
+      linter:
+        type: string
+      message:
+        description: golangci-lint's issue text, minus the rule prefix -- see parser.Parse
+        type: string
+      plans:
+        items:
+          $ref: '#/definitions/storage.FixPlan'
+        type: array
+      reason_my:
+        description: Burmese "why this breaks the rule" explanation -- see parser.reasonMy
+        type: string
+      rule:
+        type: string
+      scan_id:
+        type: string
+      severity:
+        description: critical|high|medium|low|info
+        type: string
+      status:
+        description: open|planned|fix_applied|resolved|reopened|ignored
+        type: string
+      updated_at:
+        type: string
+    type: object
+  storage.LintScan:
+    properties:
+      branch:
+        type: string
+      commit_sha:
+        type: string
+      config_hash:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: string
+      raw_output_ref:
+        type: string
+      repo_ref:
+        type: string
+      status:
+        description: running|success|failed
+        type: string
+      triggered_by:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  storage.RollbackHistory:
+    properties:
+      created_at:
+        type: string
+      fix_history_id:
+        type: string
+      id:
+        type: string
+      post_rollback_scan_id:
+        type: string
+      reason:
+        type: string
+      result:
+        description: |-
+          reverting|done|conflict|failed -- added when POST /rollbacks was
+          implemented: 11-sequence-diagram.md's own Flow 4 describes two
+          outcomes (revert succeeds vs conflicts) that need to be
+          distinguishable, and apply is worker-queued like scan/plan/fix so
+          needs an in-flight state too, but no such field existed.
+        type: string
+      revert_commit_sha:
+        type: string
+      rolled_back_by:
+        type: string
+      updated_at:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: Scan -> Plan -> Approve -> Fix -> Rollback REST API for golangci-lint
+    issue triage.
+  title: Golangci Lint Dashboard API
+  version: "1.0"
+paths:
+  /config:
+    get:
+      description: History and config endpoints are M5+ scope -- see golangci/plans/15-implementation-plan.md.
+      produces:
+      - application/json
+      responses:
+        "501":
+          description: Not Implemented
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Not implemented yet
+      tags:
+      - Unimplemented
+  /fixes:
+    post:
+      consumes:
+      - application/json
+      description: 'Rule BR-3: the plan must be "approved". Rule BR-1: one scan or
+        fix at a time per repo+branch.'
+      parameters:
+      - description: Approved plan to apply
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/api.createFixRequest'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+        "409":
+          description: plan not approved, or a scan/fix already running for this repo+branch
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Apply an approved fix plan
+      tags:
+      - Fixes
+  /fixes/{id}:
+    get:
+      parameters:
+      - description: Fix history ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/storage.FixHistory'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a fix application's result by ID
+      tags:
+      - Fixes
+  /history/fixes:
+    get:
+      description: History and config endpoints are M5+ scope -- see golangci/plans/15-implementation-plan.md.
+      produces:
+      - application/json
+      responses:
+        "501":
+          description: Not Implemented
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Not implemented yet
+      tags:
+      - Unimplemented
+  /history/rollbacks:
+    get:
+      description: History and config endpoints are M5+ scope -- see golangci/plans/15-implementation-plan.md.
+      produces:
+      - application/json
+      responses:
+        "501":
+          description: Not Implemented
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Not implemented yet
+      tags:
+      - Unimplemented
+  /history/scans:
+    get:
+      description: History and config endpoints are M5+ scope -- see golangci/plans/15-implementation-plan.md.
+      produces:
+      - application/json
+      responses:
+        "501":
+          description: Not Implemented
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Not implemented yet
+      tags:
+      - Unimplemented
+  /issues/{id}:
+    get:
+      parameters:
+      - description: Issue ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/storage.LintIssue'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a lint issue by ID
+      tags:
+      - Issues
+  /plans:
+    post:
+      consumes:
+      - application/json
+      description: Cache hit (same issue batch already planned) returns 200 with the
+        ready plan immediately; a cache miss enqueues generation and returns 202.
+      parameters:
+      - description: Issue IDs to plan a fix for
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/api.createPlanRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: cache hit -- plan already ready
+          schema:
+            $ref: '#/definitions/storage.FixPlan'
+        "202":
+          description: cache miss -- plan generation enqueued
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Request an AI-generated fix plan
+      tags:
+      - Plans
+  /plans/{id}:
+    get:
+      parameters:
+      - description: Plan ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/storage.FixPlan'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a fix plan by ID
+      tags:
+      - Plans
+  /plans/{id}/approve:
+    post:
+      consumes:
+      - application/json
+      description: 'Rule BR-3: applying a fix requires an approved plan. Rule BR-5:
+        high-risk/breaking-change plans require explicit confirmed=true.'
+      parameters:
+      - description: Plan ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: approve defaults to true; set false to reject
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/api.approvePlanRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/storage.FixPlan'
+        "400":
+          description: confirmation required for high-risk/breaking plans
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+        "409":
+          description: plan is not pending an approval decision
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Approve or reject a fix plan
+      tags:
+      - Plans
+  /rollbacks:
+    post:
+      consumes:
+      - application/json
+      description: 'Rule BR-4: revert-only, never reset/force-push. Fails if the fix
+        made no commit, or was already rolled back.'
+      parameters:
+      - description: Fix to roll back
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/api.createRollbackRequest'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: fix made no commit -- nothing to roll back
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+        "409":
+          description: already rolled back, or a scan/fix already running for this
+            repo+branch
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Roll back an applied fix
+      tags:
+      - Rollbacks
+  /rollbacks/{id}:
+    get:
+      parameters:
+      - description: Rollback ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/storage.RollbackHistory'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a rollback's result by ID
+      tags:
+      - Rollbacks
+  /scans:
+    post:
+      consumes:
+      - application/json
+      description: 'Enqueues a golangci-lint scan for repo_ref+branch. Rule BR-1:
+        only one scan or fix may run at a time per repo+branch.'
+      parameters:
+      - description: Scan target
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/api.createScanRequest'
+      produces:
+      - application/json
+      responses:
+        "202":
+          description: Accepted
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+        "409":
+          description: a scan or fix is already running for this repo+branch
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Start a lint scan
+      tags:
+      - Scans
+  /scans/{id}:
+    get:
+      parameters:
+      - description: Scan ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/storage.LintScan'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: Get a scan by ID
+      tags:
+      - Scans
+  /scans/{id}/issues:
+    get:
+      parameters:
+      - description: Scan ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Max results (default 50, capped at 200)
+        in: query
+        name: limit
+        type: integer
+      - description: Pagination offset (default 0)
+        in: query
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/storage.LintIssue'
+            type: array
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/golangci_backend_frontiir_utils.RestErr'
+      security:
+      - ApiKeyAuth: []
+      summary: List issues found by a scan
+      tags:
+      - Scans
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: X-API-Key
+    type: apiKey
+swagger: "2.0"
