@@ -61,6 +61,16 @@ TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
 
 echo "Parsed → Linter: ${LINTER} | File: ${FILE}:${LINE}"
 
+# $FILE is golangci-lint's Pos.Filename, relative to the golangci/ project root
+# (golangci-lint runs via `cd golangci && golangci-lint run ...`). This script
+# itself runs one level up (Makefile: `cd .. && bash golangci/cmd/...`), so
+# switch into golangci/ now — every path below (source file, backups, package
+# dirs for golangci-lint/go test) resolves relative to it from here on.
+# $PLAN_FILE was resolved against PLAN_DIR before the cd, so re-anchor it too
+# (extract_section_code() below still reads it).
+PLAN_FILE="${PLAN_FILE#golangci/}"
+cd golangci
+
 # Extract code block from a named section (Burmese/English heading support)
 # Usage: extract_section_code "section heading pattern"
 extract_section_code() {
@@ -290,7 +300,7 @@ PYEOF
     ;;
 
   misspell)
-    GOROOT=/usr/local/go golangci-lint run --config golangci.yml --fix "./${PKG_DIR}/..." 2>/dev/null || true
+    GOROOT=/usr/local/go golangci-lint run --config .golangci.yml --fix "./${PKG_DIR}/..." 2>/dev/null || true
     ;;
 
   gocyclo|nestif|funlen|revive)
@@ -390,7 +400,7 @@ NEW_ISSUES=""
 if [[ "$FIX_STATUS" == "APPLIED" ]]; then
   echo "Running lint validation..."
   LINT_OUTPUT=$(GOROOT=/usr/local/go golangci-lint run \
-    --config golangci.yml "./${PKG_DIR}/..." 2>&1 || true)
+    --config .golangci.yml "./${PKG_DIR}/..." 2>&1 || true)
 
   # Check if the original issue at file:line still appears
   if echo "$LINT_OUTPUT" | grep -q "${FILE}:${LINE}"; then
@@ -448,7 +458,7 @@ case "$LINTER" in
 esac
 
 # ── Generate result report (Rule 11) ─────────────────────────────────────────
-OUTPUT_DIR="golangci/after-fixed"
+OUTPUT_DIR="after-fixed"
 mkdir -p "$OUTPUT_DIR"
 RESULT_FILE="${OUTPUT_DIR}/${DATE}-lint-fixed-${N}.md"
 
@@ -546,7 +556,7 @@ ${CALLER_PKGS}
 make test-unit TEST_FUNC=ALL
 
 # Priority 4: lint re-check
-GOROOT=/usr/local/go golangci-lint run --config golangci.yml ./${PKG_DIR}/...
+GOROOT=/usr/local/go golangci-lint run --config .golangci.yml ./${PKG_DIR}/...
 \`\`\`
 
 ---
@@ -581,7 +591,7 @@ elif [[ "$LINT_STATUS" == "SKIP" ]]; then
   echo "> Lint validation skipped — fix status is \`${FIX_STATUS}\`."
   echo "> Apply fix manually, then run:"
   echo "\`\`\`bash"
-  echo "GOROOT=/usr/local/go golangci-lint run --config golangci.yml ./${PKG_DIR}/..."
+  echo "GOROOT=/usr/local/go golangci-lint run --config .golangci.yml ./${PKG_DIR}/..."
   echo "\`\`\`"
 fi)
 

@@ -61,14 +61,20 @@ COL=$(jq -r '.Pos.Column'           <<< "$ISSUE_JSON")
 TEXT=$(jq -r '.Text'                <<< "$ISSUE_JSON")
 SOURCE_LINE=$(jq -r '(.SourceLines // ["(source unavailable)"])[0]' <<< "$ISSUE_JSON")
 
+# golangci-lint records Pos.Filename relative to the golangci/ project root
+# (it's invoked via `cd golangci && golangci-lint run ...`), but this script
+# itself runs one level up (Makefile does `cd .. && bash golangci/cmd/...`),
+# so disk access needs the golangci/ prefix that $FILE lacks.
+SRC_FILE="golangci/${FILE}"
+
 # ── Read code context (LINE ±10) ──────────────────────────────────────────────
 CONTEXT_START=$(( LINE > 10 ? LINE - 10 : 1 ))
 CONTEXT_END=$(( LINE + 10 ))
-if [[ -f "$FILE" ]]; then
+if [[ -f "$SRC_FILE" ]]; then
   CODE_CONTEXT=$(awk \
     -v s="$CONTEXT_START" -v e="$CONTEXT_END" -v hl="$LINE" \
     'NR>=s && NR<=e { marker="  "; if(NR==hl) marker="▶ "; printf "%s%4d  %s\n", marker, NR, $0 }' \
-    "$FILE")
+    "$SRC_FILE")
 else
   CODE_CONTEXT="(file not readable: ${FILE})"
 fi
