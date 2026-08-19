@@ -17,3 +17,7 @@ linter-report/
 gl-code-quality-report.json
 before-fixed/
 after-fixed/
+
+# backup files from cmd/lint-fixed-plan-result.sh's pre-fix snapshot step
+# (Rule 5a: `cp <file> <file>.bak.<date>`) -- never meant to be committed
+*.bak.*
