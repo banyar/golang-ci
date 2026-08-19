@@ -112,22 +112,34 @@ func gosecTemplate(issue IssueContext) ruleTemplate {
 				"    return fmt.Errorf(\"value %d out of int32 range\", v)\n" +
 				"}\n" +
 				"safe := int32(v)",
-			sideEffects: []string{"Callers passing an out-of-range value now get an explicit error instead of a silent overflow"},
+			sideEffects: []string{
+				"Callers passing an out-of-range value now get an explicit error instead of a silent overflow",
+			},
 		}
 	case strings.Contains(msg, "G301"), strings.Contains(msg, "G302"):
 		return ruleTemplate{
 			fixStrategyCode: "os.MkdirAll(dir, 0750) // or os.WriteFile(path, data, 0600)",
-			sideEffects:     []string{"Existing files/directories created with looser permissions are not retroactively fixed"},
+			sideEffects: []string{
+				"Existing files/directories created with looser permissions are not retroactively fixed",
+			},
 		}
 	case strings.Contains(msg, "G706"):
 		return ruleTemplate{
 			fixStrategyCode: "logger.Info(\"event\", zap.String(\"user_input\", sanitize(userInput)))",
-			sideEffects:     []string{"Log output format changes -- update any log-scraping/alerting rules that parse this line"},
+			sideEffects: []string{
+				"Log output format changes -- update any log-scraping/alerting rules that parse this line",
+			},
 		}
 	default:
 		return ruleTemplate{
-			fixStrategyCode: fmt.Sprintf("// Address the gosec %s finding: %s", issue.Rule, issue.Message),
-			sideEffects:     []string{"Unknown — review the specific gosec rule's documentation before applying"},
+			fixStrategyCode: fmt.Sprintf(
+				"// Address the gosec %s finding: %s",
+				issue.Rule,
+				issue.Message,
+			),
+			sideEffects: []string{
+				"Unknown — review the specific gosec rule's documentation before applying",
+			},
 		}
 	}
 }

@@ -8,6 +8,7 @@ import (
 
 	"github.com/go-redis/redis/v8"
 	"go.uber.org/zap"
+
 	"golangci/backend/fixer"
 	"golangci/backend/parser"
 	"golangci/backend/scanner"

@@ -145,7 +145,6 @@ func BadGatewayErr(format string, args ...interface{}) *RestErr {
 }
 
 func ErrResponse(result error) *RestErr {
-
 	if result != nil {
 		// Get caller information for better context
 		pc, file, line, _ := runtime.Caller(1)
@@ -160,7 +159,8 @@ func ErrResponse(result error) *RestErr {
 			log.Printf("[WARN] Record not found: %v", result)
 			return NotFound("Requested resource not found")
 
-		case strings.Contains(result.Error(), "record not found"), strings.Contains(strings.ToLower(result.Error()), "customfield does not exist"):
+		case strings.Contains(result.Error(), "record not found"),
+			strings.Contains(strings.ToLower(result.Error()), "customfield does not exist"):
 			log.Printf("[WARN] Record not found (generic): %v", result)
 			return NotFound("%s", result.Error())
 
@@ -199,7 +199,11 @@ func GetEnvValue(key string) string {
 func GetEnvBool(key string) bool {
 	boolValue, err := strconv.ParseBool(os.Getenv(key))
 	if err != nil {
-		log.Printf("Error parsing boolean environment variable %s: %v, defaulting to false", key, err)
+		log.Printf(
+			"Error parsing boolean environment variable %s: %v, defaulting to false",
+			key,
+			err,
+		)
 		return false
 	}
 	return boolValue

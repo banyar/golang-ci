@@ -97,44 +97,44 @@ type FixPlan struct {
 	// RootCauseMy/CurrentBehaviorMy/RecommendedFixMy are Burmese counterparts
 	// to the 3 fields above, for the UI's language toggle -- additive, the
 	// English fields are unchanged and remain the fallback when these are empty.
-	RootCauseMy       string          `gorm:"type:text"          json:"root_cause_my"`
-	CurrentBehaviorMy string          `gorm:"type:text"          json:"current_behavior_my"`
-	RecommendedFixMy  string          `gorm:"type:text"          json:"recommended_fix_my"`
-	RiskLevel         string          `gorm:"size:16"            json:"risk_level"` // low|medium|high
-	BreakingChange    bool            `                          json:"breaking_change"`
-	FilesImpacted     json.RawMessage `gorm:"type:json"          json:"files_impacted"`
-	TestPlan          json.RawMessage `gorm:"type:json"          json:"test_plan"`
+	RootCauseMy       string          `gorm:"type:text" json:"root_cause_my"`
+	CurrentBehaviorMy string          `gorm:"type:text" json:"current_behavior_my"`
+	RecommendedFixMy  string          `gorm:"type:text" json:"recommended_fix_my"`
+	RiskLevel         string          `gorm:"size:16"   json:"risk_level"` // low|medium|high
+	BreakingChange    bool            `                 json:"breaking_change"`
+	FilesImpacted     json.RawMessage `gorm:"type:json" json:"files_impacted"`
+	TestPlan          json.RawMessage `gorm:"type:json" json:"test_plan"`
 	// CodeContext/FixStrategyCode/BeforeSnippet/AfterSnippet/SideEffects/
 	// ImpactAnalysis/RecommendedTestCommands/AcceptanceCriteria added
 	// 2026-08-19 to match before-fixed/*.md's section depth (§2, §4-9) --
 	// see planner.PlanResult's matching doc comments for what populates each.
-	CodeContext             string          `gorm:"type:text"          json:"code_context"`
-	FixStrategyCode         string          `gorm:"type:text"          json:"fix_strategy_code"`
-	BeforeSnippet           string          `gorm:"type:text"          json:"before_snippet"`
-	AfterSnippet            string          `gorm:"type:text"          json:"after_snippet"`
-	SideEffects             json.RawMessage `gorm:"type:json"          json:"side_effects"`
-	ImpactAnalysis          json.RawMessage `gorm:"type:json"          json:"impact_analysis"`
-	RecommendedTestCommands json.RawMessage `gorm:"type:json"          json:"recommended_test_commands"`
-	AcceptanceCriteria      json.RawMessage `gorm:"type:json"          json:"acceptance_criteria"`
+	CodeContext             string          `gorm:"type:text" json:"code_context"`
+	FixStrategyCode         string          `gorm:"type:text" json:"fix_strategy_code"`
+	BeforeSnippet           string          `gorm:"type:text" json:"before_snippet"`
+	AfterSnippet            string          `gorm:"type:text" json:"after_snippet"`
+	SideEffects             json.RawMessage `gorm:"type:json" json:"side_effects"`
+	ImpactAnalysis          json.RawMessage `gorm:"type:json" json:"impact_analysis"`
+	RecommendedTestCommands json.RawMessage `gorm:"type:json" json:"recommended_test_commands"`
+	AcceptanceCriteria      json.RawMessage `gorm:"type:json" json:"acceptance_criteria"`
 	// generating|pending|approved|rejected|applied|failed -- "generating"
 	// and "failed" added in M3 for the async plan-job sub-states (a client
 	// polling GET /plans/:id needs to tell "still working" from
 	// "permanently failed, e.g. AI Layer unavailable" apart); the other 4
 	// are 08-validation-rules.md's originally decided enum.
-	Status      string `gorm:"size:16"            json:"status"`
-	GeneratedBy string `                          json:"generated_by"`
+	Status      string `gorm:"size:16" json:"status"`
+	GeneratedBy string `               json:"generated_by"`
 	// BatchFingerprint/PromptVersion implement the Risk register's own
 	// mitigation ("cache plan by issue+source fingerprint; store model +
 	// prompt version on FixPlan") -- absent from the original M1 schema.
-	BatchFingerprint string `gorm:"size:64;index"      json:"batch_fingerprint"`
-	PromptVersion    string `gorm:"size:32"            json:"prompt_version"`
+	BatchFingerprint string `gorm:"size:64;index" json:"batch_fingerprint"`
+	PromptVersion    string `gorm:"size:32"       json:"prompt_version"`
 	// ApprovedBy/ApprovedAt implement Rule BR-3's "approver identity +
 	// timestamp recorded" requirement (10-business-rules.md) -- absent
 	// from the original M1 schema. ApprovedAt is nil until approve/reject.
-	ApprovedBy string     `                          json:"approved_by,omitempty"`
-	ApprovedAt *time.Time `                          json:"approved_at,omitempty"`
-	CreatedAt  time.Time  `                          json:"created_at"`
-	UpdatedAt  time.Time  `                          json:"updated_at"`
+	ApprovedBy string     `json:"approved_by,omitempty"`
+	ApprovedAt *time.Time `json:"approved_at,omitempty"`
+	CreatedAt  time.Time  `json:"created_at"`
+	UpdatedAt  time.Time  `json:"updated_at"`
 
 	Issues []LintIssue `gorm:"many2many:fix_plan_issues;" json:"issues,omitempty"`
 }
@@ -188,9 +188,9 @@ type RollbackHistory struct {
 	// outcomes (revert succeeds vs conflicts) that need to be
 	// distinguishable, and apply is worker-queued like scan/plan/fix so
 	// needs an in-flight state too, but no such field existed.
-	Result    string    `gorm:"size:16"            json:"result"`
-	CreatedAt time.Time `                          json:"created_at"`
-	UpdatedAt time.Time `                          json:"updated_at"`
+	Result    string    `gorm:"size:16" json:"result"`
+	CreatedAt time.Time `               json:"created_at"`
+	UpdatedAt time.Time `               json:"updated_at"`
 }
 
 func (m *RollbackHistory) BeforeCreate(tx *gorm.DB) error {

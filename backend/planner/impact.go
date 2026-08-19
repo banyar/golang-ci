@@ -97,7 +97,12 @@ func enclosingFuncName(fset *token.FileSet, f *ast.File, line int) (name string,
 // Bounded by grepCallersTimeout -- see its own doc comment for why
 // (matches scanner.Run/fixer.Apply's existing exec.CommandContext usage
 // against the same scanned repos).
-func grepCallers(ctx context.Context, repoRef, definingFile string, definingLine int, funcName string) ([]string, error) {
+func grepCallers(
+	ctx context.Context,
+	repoRef, definingFile string,
+	definingLine int,
+	funcName string,
+) ([]string, error) {
 	ctx, cancel := context.WithTimeout(ctx, grepCallersTimeout)
 	defer cancel()
 

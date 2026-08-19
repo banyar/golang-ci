@@ -10,8 +10,9 @@ import (
 	"sort"
 	"strings"
 
-	"golangci/backend/storage"
 	"gorm.io/gorm"
+
+	"golangci/backend/storage"
 )
 
 // PromptVersion is stored on every FixPlan (Risk register mitigation:
@@ -132,7 +133,9 @@ func (s *Service) FulfillPlan(ctx context.Context, planID string) error {
 	// already validated same-scan in RequestPlan, so one lookup covers
 	// every issue in the batch.
 	var scan storage.LintScan
-	if err := s.db.WithContext(ctx).First(&scan, "id = ?", plan.Issues[0].ScanID).Error; err != nil {
+	if err := s.db.WithContext(ctx).
+		First(&scan, "id = ?", plan.Issues[0].ScanID).
+		Error; err != nil {
 		return fmt.Errorf("load scan for plan %s: %w", planID, err)
 	}
 
