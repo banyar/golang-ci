@@ -55,30 +55,8 @@ linters:
   # Enable specific linter
   # https://golangci-lint.run/usage/linters/#enabled-by-default
   enable:
-    - asciicheck
-    - bidichk
     - errcheck
-    - errorlint
-    - exhaustive
-    - funlen
-    - gocritic
-    - godox
-    - gosec
-    - govet
-    - ineffassign
-    - misspell
-    - mnd  # renamed from gomnd
-    - nolintlint
-    - reassign
-    - revive
-    - staticcheck
-    - thelper
-    - unconvert
-    - unparam
-    - unused
-    - usestdlibvars
-    - wastedassign
-    - whitespace
+    
   
   # Exclusions for paths (migrated from run.skip-dirs and run.skip-dirs-use-default)
   exclusions:
@@ -93,6 +71,19 @@ formatters:
     - gofumpt
     - goimports
     - golines
+  # gci and goimports both check import grouping/order; without agreeing on
+  # what "local" means for this module they use incompatible defaults and
+  # each undoes the other's --fix pass. This is rule-my.md §6/§7's
+  # documented convention (stdlib -> external -> internal/local).
+  settings:
+    gci:
+      sections:
+        - standard
+        - default
+        - localmodule
+    goimports:
+      local-prefixes:
+        - golangci
 severity:
   # Set the default severity for issues.
   default: error
