@@ -96,7 +96,16 @@ func Apply(
 	// in a completely different repo) can serve a stale "0 issues"
 	// result here and silently suppress --fix from doing anything. A
 	// fresh, per-invocation cache dir avoids that entirely.
-	fixCmd.Env = append(os.Environ(), "GOLANGCI_LINT_CACHE="+filepath.Join(scratchDir, "cache"))
+	// GOROOT: see scanner.Run's identical comment -- this process's ambient
+	// environment can carry a stale/wrong GOROOT that makes golangci-lint's
+	// typecheck pass fail for every package it touches, silently preventing
+	// --fix from doing anything to those files. Appended last so it
+	// overrides any inherited value.
+	fixCmd.Env = append(
+		os.Environ(),
+		"GOLANGCI_LINT_CACHE="+filepath.Join(scratchDir, "cache"),
+		"GOROOT=/usr/local/go",
+	)
 	_ = fixCmd.Run() // non-zero exit is expected if unfixable issues remain -- not a failure
 
 	statusOut, err := exec.CommandContext(ctx, "git", "-C", tmpDir, "status", "--porcelain").

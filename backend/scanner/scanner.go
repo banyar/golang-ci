@@ -101,7 +101,13 @@ func Run(ctx context.Context, repoPath, branch string) ([]byte, error) {
 		return nil, fmt.Errorf("create scan cache dir: %w", err)
 	}
 	defer os.RemoveAll(cacheDir)
-	lintCmd.Env = append(os.Environ(), "GOLANGCI_LINT_CACHE="+cacheDir)
+	// GOROOT: this process's ambient environment can carry a stale/wrong
+	// GOROOT (e.g. an old toolchain download) that doesn't match go.mod's
+	// toolchain directive, which makes golangci-lint's typecheck pass fail
+	// with "compile: version X does not match go tool version Y" for every
+	// package. cmd/*.sh's equivalent invocations always pin GOROOT for the
+	// same reason; appended last so it overrides any inherited value.
+	lintCmd.Env = append(os.Environ(), "GOLANGCI_LINT_CACHE="+cacheDir, "GOROOT=/usr/local/go")
 	_ = lintCmd.Run() // non-zero exit here just means "found issues" -- not a failure
 
 	raw, err := os.ReadFile(jsonPath)
